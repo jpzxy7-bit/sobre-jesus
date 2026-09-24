@@ -17,16 +17,14 @@ content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'
 
 <style>
 :root{
-    --bg:#f6f4ef;
-    --card:#ffffff;
-    --text:#202020;
-    --muted:#77736c;
-    --gold:#b68a45;
-    --gold2:#d6ad60;
-    --border:#e6e1d8;
-    --sidebar:#ffffff;
-    --soft:#f0ede6;
-    --shadow:0 8px 30px rgba(30,25,15,.08);
+    --bg:#f5f3ee;
+    --card:#fff;
+    --text:#222;
+    --muted:#777;
+    --gold:#b48a4a;
+    --border:#e7e2d9;
+    --soft:#f1eee7;
+    --dark:#1d1a16;
 }
 
 *{
@@ -40,76 +38,68 @@ body{
     font-family:Arial,Helvetica,sans-serif;
     background:var(--bg);
     color:var(--text);
-    line-height:1.6;
 }
 
 a{
-    color:inherit;
     text-decoration:none;
+    color:inherit;
 }
 
 button{
     font-family:inherit;
 }
 
-.layout{
-    display:flex;
-    min-height:100vh;
-}
-
 /* SIDEBAR */
 
 .sidebar{
-    width:240px;
-    background:var(--sidebar);
-    border-right:1px solid var(--border);
     position:fixed;
     left:0;
     top:0;
     bottom:0;
-    padding:25px 16px;
+    width:235px;
+    background:white;
+    border-right:1px solid var(--border);
+    padding:25px 15px;
     z-index:100;
 }
 
 .logo{
     display:flex;
     align-items:center;
-    gap:10px;
-    font-size:21px;
+    gap:9px;
+    font-size:20px;
     font-weight:bold;
     margin-bottom:35px;
 }
 
 .logo-cross{
     color:var(--gold);
-    font-size:25px;
+    font-size:27px;
 }
 
 .menu-title{
-    color:#aaa39a;
-    font-size:11px;
-    font-weight:bold;
+    color:#aaa;
+    font-size:10px;
     text-transform:uppercase;
-    margin:22px 12px 8px;
     letter-spacing:1px;
+    margin:20px 12px 8px;
 }
 
 .menu a{
     display:flex;
     align-items:center;
     gap:12px;
-    padding:11px 13px;
-    margin:4px 0;
+    padding:11px 12px;
     border-radius:9px;
-    color:#5f5b55;
+    color:#666;
     font-size:14px;
-    transition:.2s;
+    margin:3px 0;
 }
 
 .menu a:hover,
 .menu a.active{
     background:#f2eee6;
-    color:#8a652e;
+    color:#8d6935;
 }
 
 .menu-icon{
@@ -119,11 +109,11 @@ button{
 
 .profile{
     position:absolute;
-    left:16px;
-    right:16px;
     bottom:20px;
+    left:15px;
+    right:15px;
     border-top:1px solid var(--border);
-    padding-top:16px;
+    padding-top:15px;
     display:flex;
     gap:10px;
     align-items:center;
@@ -133,10 +123,7 @@ button{
     width:38px;
     height:38px;
     border-radius:50%;
-    background:
-        url("imagens/perfil.jpg")
-        center/cover,
-        #ddd;
+    background:url("imagens/perfil.jpg") center/cover no-repeat;
 }
 
 .profile strong{
@@ -152,20 +139,17 @@ button{
 /* MAIN */
 
 .main{
-    margin-left:240px;
-    width:calc(100% - 240px);
+    margin-left:235px;
     min-height:100vh;
 }
 
-/* TOPBAR */
-
 .topbar{
-    height:72px;
+    height:70px;
     background:white;
     border-bottom:1px solid var(--border);
     display:flex;
-    align-items:center;
     justify-content:space-between;
+    align-items:center;
     padding:0 35px;
 }
 
@@ -174,22 +158,21 @@ button{
 }
 
 .welcome p{
-    color:#8d8880;
+    color:#999;
     font-size:12px;
 }
 
 .top-actions{
     display:flex;
-    align-items:center;
-    gap:18px;
+    gap:10px;
 }
 
 .top-button{
     width:38px;
     height:38px;
-    border:1px solid var(--border);
-    background:white;
     border-radius:50%;
+    background:white;
+    border:1px solid var(--border);
     cursor:pointer;
 }
 
@@ -204,7 +187,7 @@ button{
 /* HERO */
 
 .hero{
-    min-height:310px;
+    min-height:330px;
     border-radius:16px;
     overflow:hidden;
     position:relative;
@@ -216,11 +199,10 @@ button{
     background:
         linear-gradient(
             90deg,
-            rgba(20,17,13,.82),
-            rgba(20,17,13,.35)
+            rgba(15,12,8,.88),
+            rgba(15,12,8,.30)
         ),
-        url("imagens/cruz.jpg") center/cover,
-        linear-gradient(135deg,#30291e,#9d7840);
+        url("imagens/cruz.jpg") center/cover no-repeat;
 }
 
 .hero-content{
@@ -231,49 +213,44 @@ button{
     display:inline-flex;
     align-items:center;
     gap:7px;
-    font-size:11px;
     background:rgba(0,0,0,.45);
-    border-radius:20px;
     padding:6px 10px;
-    margin-bottom:16px;
+    border-radius:20px;
+    font-size:10px;
+    margin-bottom:15px;
 }
 
 .live-dot{
     width:6px;
     height:6px;
+    background:#e05248;
     border-radius:50%;
-    background:#d34b43;
 }
 
 .hero h1{
-    font-size:clamp(30px,4vw,46px);
+    font-size:clamp(32px,4vw,50px);
     line-height:1.1;
-    margin-bottom:12px;
+    margin-bottom:13px;
 }
 
 .hero p{
+    max-width:520px;
     color:#eee;
-    max-width:510px;
-    margin-bottom:22px;
     font-size:15px;
+    margin-bottom:22px;
 }
 
 .hero-button{
     display:inline-block;
     background:white;
-    color:#29251e;
+    color:#29251f;
     padding:11px 18px;
     border-radius:7px;
     font-weight:bold;
     font-size:13px;
-    transition:.2s;
 }
 
-.hero-button:hover{
-    transform:translateY(-2px);
-}
-
-/* GRID */
+/* DASHBOARD */
 
 .dashboard-grid{
     display:grid;
@@ -283,37 +260,32 @@ button{
 }
 
 .card{
-    background:var(--card);
+    background:white;
     border:1px solid var(--border);
     border-radius:14px;
     padding:20px;
-    box-shadow:var(--shadow);
+    box-shadow:0 5px 20px rgba(30,25,15,.05);
 }
 
 .card-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:18px;
+    margin-bottom:16px;
 }
 
 .card-header h3{
     font-size:16px;
 }
 
-.card-header a{
-    color:#8b754f;
-    font-size:11px;
-}
-
 /* EVENTS */
 
 .event{
     display:flex;
+    gap:12px;
     align-items:center;
-    gap:13px;
     padding:10px 0;
-    border-bottom:1px solid #eeeae3;
+    border-bottom:1px solid #eee;
 }
 
 .event:last-child{
@@ -322,7 +294,7 @@ button{
 
 .date{
     width:42px;
-    height:48px;
+    height:46px;
     border:1px solid var(--border);
     border-radius:8px;
     text-align:center;
@@ -333,15 +305,14 @@ button{
 .date strong{
     display:block;
     background:#f0ece4;
-    font-size:9px;
+    color:#987238;
+    font-size:8px;
     padding:3px;
-    color:#a17a3b;
 }
 
 .date span{
     display:block;
     padding:5px;
-    font-size:14px;
     font-weight:bold;
 }
 
@@ -355,7 +326,7 @@ button{
     font-size:10px;
 }
 
-/* QUICK ACCESS */
+/* QUICK */
 
 .quick-grid{
     display:grid;
@@ -364,61 +335,64 @@ button{
 }
 
 .quick{
-    min-height:80px;
+    min-height:78px;
     border:1px solid var(--border);
-    border-radius:10px;
+    border-radius:9px;
     display:flex;
     flex-direction:column;
-    justify-content:center;
     align-items:center;
-    gap:7px;
+    justify-content:center;
+    gap:6px;
     font-size:12px;
-    color:#5f5b55;
-    transition:.2s;
+    color:#666;
 }
 
 .quick span{
-    font-size:22px;
+    font-size:21px;
 }
 
 .quick:hover{
-    border-color:var(--gold2);
-    background:#fbf8f1;
-    transform:translateY(-2px);
+    background:#faf7f0;
+    border-color:#d4b37b;
 }
 
-/* DAILY VERSE */
+/* VERSE */
 
 .daily{
     background:
-        linear-gradient(rgba(255,255,255,.78),rgba(255,255,255,.92)),
-        url("imagens/biblia.jpg") center/cover;
+        linear-gradient(
+            rgba(255,255,255,.83),
+            rgba(255,255,255,.94)
+        ),
+        url("imagens/biblia.jpg") center/cover no-repeat;
 }
 
-.daily h3{
-    color:#9a7135;
-    font-size:18px;
+.bible-image{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:9px;
     margin-bottom:15px;
 }
 
 .daily p{
-    color:#5d5953;
     font-family:Georgia,serif;
     font-style:italic;
+    color:#5e5952;
     font-size:15px;
 }
 
 .daily-reference{
-    margin-top:16px;
-    color:#a17a3b;
+    color:#9d7439;
     font-weight:bold;
-    font-size:12px;
+    font-size:11px;
+    margin-top:10px;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
-    margin-top:24px;
+    margin-top:25px;
 }
 
 .section-title{
@@ -426,12 +400,43 @@ button{
 }
 
 .section-title h2{
-    font-size:22px;
+    font-size:23px;
 }
 
 .section-title p{
-    color:#88827a;
+    color:#888;
     font-size:13px;
+}
+
+/* BIBLE */
+
+.bible-banner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:25px;
+}
+
+.bible-banner h2{
+    font-family:Georgia,serif;
+    margin-bottom:5px;
+}
+
+.bible-banner p{
+    color:#777;
+    font-size:13px;
+}
+
+.bible-button{
+    background:#98723c;
+    color:white;
+    padding:12px 20px;
+    border-radius:8px;
+    font-weight:bold;
 }
 
 /* JESUS */
@@ -443,7 +448,7 @@ button{
 }
 
 .jesus-photo{
-    min-height:390px;
+    height:430px;
     border-radius:14px;
     overflow:hidden;
     background:#ddd;
@@ -452,43 +457,43 @@ button{
 .jesus-photo img{
     width:100%;
     height:100%;
-    min-height:390px;
     object-fit:cover;
     display:block;
 }
 
 .jesus-text{
-    padding:28px;
     background:white;
     border:1px solid var(--border);
     border-radius:14px;
+    padding:30px;
 }
 
 .jesus-text h2{
     font-family:Georgia,serif;
-    font-size:30px;
-    margin-bottom:14px;
+    font-size:31px;
+    margin-bottom:15px;
 }
 
 .jesus-text p{
-    color:#716d67;
+    color:#716c65;
     margin-bottom:15px;
 }
 
 .verse-box{
     margin-top:20px;
     padding:17px;
-    background:#f8f4eb;
     border-left:3px solid var(--gold);
-    border-radius:0 8px 8px 0;
+    background:#f7f3eb;
     font-family:Georgia,serif;
+    font-style:italic;
 }
 
 .verse-box small{
     display:block;
-    color:#9a7135;
     margin-top:8px;
+    color:#9b733b;
     font-family:Arial,sans-serif;
+    font-style:normal;
 }
 
 /* PECADOS */
@@ -497,21 +502,17 @@ button{
     width:100%;
     border:1px solid var(--border);
     background:white;
-    padding:13px 16px;
+    padding:13px 15px;
     border-radius:9px;
+    margin-bottom:14px;
     outline:none;
-    margin-bottom:15px;
-}
-
-.search:focus{
-    border-color:var(--gold2);
 }
 
 .filters{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
-    margin-bottom:16px;
+    margin-bottom:15px;
 }
 
 .filter{
@@ -520,15 +521,14 @@ button{
     padding:7px 13px;
     border-radius:20px;
     cursor:pointer;
-    color:#777;
     font-size:12px;
+    color:#777;
 }
 
 .filter.active,
 .filter:hover{
     background:var(--gold);
     color:white;
-    border-color:var(--gold);
 }
 
 .sin-grid{
@@ -542,12 +542,6 @@ button{
     border:1px solid var(--border);
     border-radius:13px;
     padding:20px;
-    transition:.25s;
-}
-
-.sin-card:hover{
-    transform:translateY(-3px);
-    box-shadow:var(--shadow);
 }
 
 .sin-number{
@@ -557,22 +551,22 @@ button{
 }
 
 .sin-card h3{
+    margin:5px 0 8px;
     font-size:19px;
-    margin:5px 0 9px;
 }
 
 .sin-card p{
-    color:#77736d;
+    color:#777;
     font-size:13px;
 }
 
 .info{
     margin-top:12px;
-    padding:10px;
     background:#f7f4ed;
+    padding:10px;
     border-radius:7px;
     font-size:11px;
-    color:#68635b;
+    color:#666;
 }
 
 .info strong{
@@ -586,11 +580,11 @@ button{
     font-weight:bold;
 }
 
-/* STEPS */
+/* CAMINHO */
 
 .steps{
     display:grid;
-    grid-template-columns:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:14px;
 }
 
@@ -624,78 +618,39 @@ button{
     font-size:12px;
 }
 
-/* PRAYER */
+/* ORAÇÃO */
 
 .prayer{
-    background:#1e1b16;
+    background:
+        linear-gradient(
+            rgba(25,22,18,.88),
+            rgba(25,22,18,.88)
+        ),
+        url("imagens/oracao.jpg") center/cover no-repeat;
     color:white;
     border-radius:14px;
-    padding:38px;
-    position:relative;
-    overflow:hidden;
-}
-
-.prayer::after{
-    content:"✝";
-    position:absolute;
-    right:60px;
-    top:20px;
-    font-size:120px;
-    color:rgba(214,173,96,.08);
+    padding:40px;
 }
 
 .prayer h2{
-    color:#e2bd79;
-    margin-bottom:10px;
+    color:#dfbd7e;
+    margin-bottom:12px;
 }
 
 .prayer p{
-    color:#d0cdc7;
-    max-width:750px;
+    max-width:850px;
+    color:#ddd;
     font-family:Georgia,serif;
     font-style:italic;
-}
-
-/* BIBLE */
-
-.bible-banner{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    background:#fff;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:24px;
-}
-
-.bible-banner h2{
-    font-family:Georgia,serif;
-    margin-bottom:5px;
-}
-
-.bible-banner p{
-    color:#777;
-    font-size:13px;
-}
-
-.bible-button{
-    background:#9b753d;
-    color:white;
-    border:0;
-    border-radius:8px;
-    padding:12px 20px;
-    font-weight:bold;
-    cursor:pointer;
 }
 
 /* FOOTER */
 
 footer{
     text-align:center;
+    padding:35px;
     color:#999;
     font-size:11px;
-    padding:35px;
 }
 
 /* MOBILE */
@@ -717,10 +672,6 @@ footer{
     .sin-grid{
         grid-template-columns:repeat(2,1fr);
     }
-
-    .steps{
-        grid-template-columns:repeat(2,1fr);
-    }
 }
 
 @media(max-width:800px){
@@ -731,16 +682,16 @@ footer{
 
     .main{
         margin-left:0;
-        width:100%;
     }
 
     .mobile-header{
         display:flex;
+        height:60px;
         background:white;
         border-bottom:1px solid var(--border);
-        padding:15px;
-        justify-content:space-between;
         align-items:center;
+        justify-content:space-between;
+        padding:0 15px;
         position:sticky;
         top:0;
         z-index:200;
@@ -755,7 +706,7 @@ footer{
     }
 
     .hero{
-        min-height:360px;
+        min-height:390px;
         padding:28px;
     }
 
@@ -771,12 +722,16 @@ footer{
         grid-template-columns:1fr;
     }
 
+    .jesus-photo{
+        height:350px;
+    }
+
     .sin-grid{
         grid-template-columns:1fr;
     }
 
     .steps{
-        grid-template-columns:1fr 1fr;
+        grid-template-columns:1fr;
     }
 
     .bible-banner{
@@ -784,39 +739,18 @@ footer{
         align-items:flex-start;
     }
 }
-
-@media(max-width:500px){
-
-    .steps{
-        grid-template-columns:1fr;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .hero{
-        min-height:400px;
-    }
-
-    .prayer{
-        padding:25px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<div class="layout">
-
-<!-- SIDEBAR -->
+<!-- MENU LATERAL -->
 
 <aside class="sidebar">
 
     <div class="logo">
         <span class="logo-cross">✝</span>
-        <span>Caminho com Jesus</span>
+        Caminho com Jesus
     </div>
 
     <div class="menu-title">Principal</div>
@@ -893,15 +827,11 @@ footer{
         Caminho com Jesus
     </div>
 
-    <button class="top-button" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-        ☰
-    </button>
+    <button class="top-button">☰</button>
 
 </div>
 
 <main class="main">
-
-<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -909,19 +839,16 @@ footer{
 
         <h2>Bom dia! 🙏</h2>
 
-        <p>
-            Bem-vindo ao Caminho com Jesus
-        </p>
+        <p>Bem-vindo ao Caminho com Jesus</p>
 
     </div>
 
     <div class="top-actions">
 
-        <button class="top-button" onclick="novoVersiculo()">
-            ☀
-        </button>
+        <button class="top-button" onclick="novoVersiculo()">☀</button>
 
-        <button class="top-button" onclick="document.getElementById('oracao').scrollIntoView({behavior:'smooth'})">
+        <button class="top-button"
+        onclick="document.getElementById('oracao').scrollIntoView({behavior:'smooth'})">
             ♡
         </button>
 
@@ -943,8 +870,7 @@ footer{
         </div>
 
         <h1>
-            Uma vida guiada por
-            <strong>Jesus</strong>
+            Uma vida guiada por Jesus
         </h1>
 
         <p>
@@ -965,16 +891,10 @@ footer{
 
 <div class="dashboard-grid">
 
-    <!-- EVENTOS -->
-
     <div class="card" id="eventos">
 
         <div class="card-header">
-
             <h3>Próximos momentos</h3>
-
-            <a href="#oracao">Ver mais</a>
-
         </div>
 
         <div class="event">
@@ -1021,8 +941,6 @@ footer{
 
     </div>
 
-    <!-- ACESSO RÁPIDO -->
-
     <div class="card">
 
         <div class="card-header">
@@ -1055,14 +973,19 @@ footer{
 
     </div>
 
-    <!-- VERSICULO -->
-
     <div class="card daily" id="versiculo">
 
         <div class="card-header">
             <h3>Versículo do dia</h3>
             <span>☀</span>
         </div>
+
+        <img
+            src="imagens/biblia.jpg"
+            class="bible-image"
+            alt="Bíblia aberta"
+            loading="lazy"
+        >
 
         <p id="dailyText">
             "O Senhor é o meu pastor; nada me faltará."
@@ -1088,7 +1011,7 @@ footer{
 
             <p>
                 Leia a Palavra, pesquise versículos
-                e marque os textos importantes para você.
+                e marque os textos importantes.
             </p>
 
         </div>
@@ -1109,9 +1032,7 @@ footer{
 
         <h2>Jesus Cristo</h2>
 
-        <p>
-            O centro da fé cristã
-        </p>
+        <p>O centro da fé cristã</p>
 
     </div>
 
@@ -1121,7 +1042,7 @@ footer{
 
             <img
                 src="imagens/jesus.jpg"
-                alt="Imagem representando Jesus"
+                alt="Representação de Jesus"
                 loading="lazy"
             >
 
@@ -1149,9 +1070,7 @@ footer{
                 "Eu sou o caminho, a verdade e a vida.
                 Ninguém vem ao Pai senão por mim."
 
-                <small>
-                    João 14:6
-                </small>
+                <small>João 14:6</small>
 
             </div>
 
@@ -1170,8 +1089,8 @@ footer{
         <h2>Conhecendo o pecado</h2>
 
         <p>
-            Entenda diferentes atitudes apresentadas
-            pela Bíblia e maneiras de combatê-las.
+            Entenda diferentes atitudes apresentadas pela Bíblia
+            e maneiras de combatê-las.
         </p>
 
     </div>
@@ -1180,7 +1099,6 @@ footer{
         id="search"
         class="search"
         type="search"
-        autocomplete="off"
         placeholder="🔎 Pesquisar pecado ou palavra..."
     >
 
@@ -1204,279 +1122,102 @@ footer{
 
     </div>
 
-    <div class="sin-grid" id="sinGrid">
+    <div class="sin-grid">
 
         <article class="sin-card" data-category="pensamentos">
-
             <span class="sin-number">01 • PENSAMENTOS</span>
-
             <h3>Orgulho</h3>
-
-            <p>
-                Exaltar a si mesmo, desprezar os outros
-                ou agir como se não precisasse de Deus.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Pratique humildade, reconheça seus erros
-                e coloque Deus acima do próprio ego.
-            </div>
-
-            <div class="scripture">
-                📖 Provérbios 16:18
-            </div>
-
+            <p>Exaltar a si mesmo, desprezar os outros ou agir como se não precisasse de Deus.</p>
+            <div class="info"><strong>Como evitar:</strong> Pratique humildade, reconheça seus erros e coloque Deus acima do próprio ego.</div>
+            <div class="scripture">📖 Provérbios 16:18</div>
         </article>
 
         <article class="sin-card" data-category="relacionamentos">
-
             <span class="sin-number">02 • RELACIONAMENTOS</span>
-
             <h3>Inveja</h3>
-
-            <p>
-                Desejar aquilo que pertence a outra pessoa
-                ou ficar ressentido com suas conquistas.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Pratique gratidão e aprenda a comemorar
-                as conquistas das outras pessoas.
-            </div>
-
-            <div class="scripture">
-                📖 Gálatas 5:26
-            </div>
-
+            <p>Desejar aquilo que pertence a outra pessoa ou ficar ressentido com suas conquistas.</p>
+            <div class="info"><strong>Como evitar:</strong> Pratique gratidão e aprenda a comemorar as conquistas das outras pessoas.</div>
+            <div class="scripture">📖 Gálatas 5:26</div>
         </article>
 
         <article class="sin-card" data-category="atitudes">
-
             <span class="sin-number">03 • ATITUDES</span>
-
             <h3>Raiva e ódio</h3>
-
-            <p>
-                Alimentar ressentimento, hostilidade
-                ou desejo de vingança.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Pare antes de reagir, ore, converse com
-                calma e busque o perdão.
-            </div>
-
-            <div class="scripture">
-                📖 Efésios 4:26-27
-            </div>
-
+            <p>Alimentar ressentimento, hostilidade ou desejo de vingança.</p>
+            <div class="info"><strong>Como evitar:</strong> Pare antes de reagir, ore, converse com calma e busque o perdão.</div>
+            <div class="scripture">📖 Efésios 4:26-27</div>
         </article>
 
         <article class="sin-card" data-category="atitudes">
-
             <span class="sin-number">04 • ATITUDES</span>
-
             <h3>Mentira</h3>
-
-            <p>
-                Usar falsidade ou engano para esconder
-                a verdade ou prejudicar alguém.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Procure falar a verdade e assuma seus erros.
-            </div>
-
-            <div class="scripture">
-                📖 Colossenses 3:9
-            </div>
-
+            <p>Usar falsidade ou engano para esconder a verdade ou prejudicar alguém.</p>
+            <div class="info"><strong>Como evitar:</strong> Procure falar a verdade e assuma seus erros.</div>
+            <div class="scripture">📖 Colossenses 3:9</div>
         </article>
 
         <article class="sin-card" data-category="atitudes">
-
             <span class="sin-number">05 • ATITUDES</span>
-
             <h3>Ganância</h3>
-
-            <p>
-                Colocar a busca por riquezas ou bens
-                acima de Deus e das pessoas.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Pratique gratidão, generosidade e contentamento.
-            </div>
-
-            <div class="scripture">
-                📖 Lucas 12:15
-            </div>
-
+            <p>Colocar a busca por riquezas ou bens acima de Deus e das pessoas.</p>
+            <div class="info"><strong>Como evitar:</strong> Pratique gratidão, generosidade e contentamento.</div>
+            <div class="scripture">📖 Lucas 12:15</div>
         </article>
 
         <article class="sin-card" data-category="pensamentos">
-
             <span class="sin-number">06 • PENSAMENTOS</span>
-
             <h3>Lascívia</h3>
-
-            <p>
-                Alimentar conscientemente desejos de maneira
-                contrária aos ensinamentos cristãos.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Evite conteúdos que alimentem a tentação,
-                mude o foco e busque a Deus em oração.
-            </div>
-
-            <div class="scripture">
-                📖 Mateus 5:28
-            </div>
-
+            <p>Alimentar conscientemente desejos de maneira contrária aos ensinamentos cristãos.</p>
+            <div class="info"><strong>Como evitar:</strong> Evite conteúdos que alimentem a tentação e busque a Deus em oração.</div>
+            <div class="scripture">📖 Mateus 5:28</div>
         </article>
 
         <article class="sin-card" data-category="atitudes">
-
             <span class="sin-number">07 • ATITUDES</span>
-
             <h3>Preguiça espiritual</h3>
-
-            <p>
-                Negligenciar a oração, a leitura bíblica
-                e o crescimento espiritual.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Crie uma rotina simples de oração
-                e leitura da Bíblia.
-            </div>
-
-            <div class="scripture">
-                📖 Hebreus 10:24-25
-            </div>
-
+            <p>Negligenciar a oração, a leitura bíblica e o crescimento espiritual.</p>
+            <div class="info"><strong>Como evitar:</strong> Crie uma rotina simples de oração e leitura da Bíblia.</div>
+            <div class="scripture">📖 Hebreus 10:24-25</div>
         </article>
 
         <article class="sin-card" data-category="relacionamentos">
-
             <span class="sin-number">08 • RELACIONAMENTOS</span>
-
             <h3>Fofoca</h3>
-
-            <p>
-                Espalhar informações sobre alguém
-                de maneira desnecessária ou prejudicial.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Antes de falar, pergunte:
-                "É verdadeiro? É necessário? Vai ajudar?"
-            </div>
-
-            <div class="scripture">
-                📖 Provérbios 16:28
-            </div>
-
+            <p>Espalhar informações sobre alguém de maneira desnecessária ou prejudicial.</p>
+            <div class="info"><strong>Como evitar:</strong> Antes de falar, pergunte se é verdadeiro, necessário e útil.</div>
+            <div class="scripture">📖 Provérbios 16:28</div>
         </article>
 
         <article class="sin-card" data-category="relacionamentos">
-
             <span class="sin-number">09 • RELACIONAMENTOS</span>
-
             <h3>Falta de perdão</h3>
-
-            <p>
-                Alimentar ressentimento e desejo de
-                vingança contra alguém.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Entregue a situação a Deus e procure
-                praticar o perdão.
-            </div>
-
-            <div class="scripture">
-                📖 Efésios 4:32
-            </div>
-
+            <p>Alimentar ressentimento e desejo de vingança contra alguém.</p>
+            <div class="info"><strong>Como evitar:</strong> Entregue a situação a Deus e procure praticar o perdão.</div>
+            <div class="scripture">📖 Efésios 4:32</div>
         </article>
 
         <article class="sin-card" data-category="relacionamentos">
-
             <span class="sin-number">10 • RELACIONAMENTOS</span>
-
             <h3>Falta de amor</h3>
-
-            <p>
-                Tratar o próximo com desprezo,
-                crueldade ou indiferença.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Pratique respeito, paciência,
-                compaixão e serviço ao próximo.
-            </div>
-
-            <div class="scripture">
-                📖 Marcos 12:31
-            </div>
-
+            <p>Tratar o próximo com desprezo, crueldade ou indiferença.</p>
+            <div class="info"><strong>Como evitar:</strong> Pratique respeito, paciência, compaixão e serviço.</div>
+            <div class="scripture">📖 Marcos 12:31</div>
         </article>
 
         <article class="sin-card" data-category="pensamentos">
-
             <span class="sin-number">11 • PENSAMENTOS</span>
-
             <h3>Cobiça</h3>
-
-            <p>
-                Desejar excessivamente aquilo
-                que pertence a outra pessoa.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Cultive contentamento e gratidão.
-            </div>
-
-            <div class="scripture">
-                📖 Êxodo 20:17
-            </div>
-
+            <p>Desejar excessivamente aquilo que pertence a outra pessoa.</p>
+            <div class="info"><strong>Como evitar:</strong> Cultive contentamento e gratidão.</div>
+            <div class="scripture">📖 Êxodo 20:17</div>
         </article>
 
         <article class="sin-card" data-category="atitudes">
-
             <span class="sin-number">12 • ATITUDES</span>
-
             <h3>Hipocrisia</h3>
-
-            <p>
-                Exigir dos outros aquilo que você mesmo
-                não está disposto a praticar.
-            </p>
-
-            <div class="info">
-                <strong>Como evitar:</strong>
-                Seja sincero, reconheça suas próprias
-                falhas e pratique aquilo que ensina.
-            </div>
-
-            <div class="scripture">
-                📖 Mateus 23:27-28
-            </div>
-
+            <p>Exigir dos outros aquilo que você mesmo não está disposto a praticar.</p>
+            <div class="info"><strong>Como evitar:</strong> Seja sincero, reconheça suas próprias falhas e pratique aquilo que ensina.</div>
+            <div class="scripture">📖 Mateus 23:27-28</div>
         </article>
 
     </div>
@@ -1491,10 +1232,7 @@ footer{
 
         <h2>Como lutar contra o pecado?</h2>
 
-        <p>
-            A caminhada cristã envolve arrependimento,
-            fé, disciplina e dependência de Deus.
-        </p>
+        <p>A caminhada cristã envolve arrependimento, fé, disciplina e dependência de Deus.</p>
 
     </div>
 
@@ -1503,55 +1241,37 @@ footer{
         <div class="step">
             <div class="step-number">1</div>
             <h3>Reconheça</h3>
-            <p>
-                Admita quando algo estiver errado.
-                Não tente justificar aquilo que precisa ser corrigido.
-            </p>
+            <p>Admita quando algo estiver errado.</p>
         </div>
 
         <div class="step">
             <div class="step-number">2</div>
             <h3>Arrependa-se</h3>
-            <p>
-                Confesse seus pecados a Deus e volte
-                o coração para aquilo que é correto.
-            </p>
+            <p>Confesse seus pecados a Deus e volte o coração para aquilo que é correto.</p>
         </div>
 
         <div class="step">
             <div class="step-number">3</div>
             <h3>Ore</h3>
-            <p>
-                Converse com Deus com sinceridade
-                e peça força para resistir à tentação.
-            </p>
+            <p>Converse com Deus com sinceridade e peça força.</p>
         </div>
 
         <div class="step">
             <div class="step-number">4</div>
             <h3>Afaste-se</h3>
-            <p>
-                Identifique situações e conteúdos
-                que normalmente levam você à tentação.
-            </p>
+            <p>Identifique situações e conteúdos que levam você à tentação.</p>
         </div>
 
         <div class="step">
             <div class="step-number">5</div>
             <h3>Leia a Bíblia</h3>
-            <p>
-                Conheça os ensinamentos de Jesus
-                e coloque-os em prática.
-            </p>
+            <p>Conheça os ensinamentos de Jesus e coloque-os em prática.</p>
         </div>
 
         <div class="step">
             <div class="step-number">6</div>
             <h3>Recomece</h3>
-            <p>
-                Uma queda não precisa significar o fim.
-                Reconheça, aprenda e continue buscando a Deus.
-            </p>
+            <p>Uma queda não precisa significar o fim. Reconheça, aprenda e continue.</p>
         </div>
 
     </div>
@@ -1567,17 +1287,11 @@ footer{
         <h2>🙏 Momento de oração</h2>
 
         <p>
-            "Senhor Jesus, ajuda-me a reconhecer aquilo que
-            precisa mudar em minha vida. Dá-me força para
-            resistir às tentações, sabedoria para escolher
-            o que é certo e humildade para reconhecer meus erros.
-
-            Ajuda-me a amar o próximo, perdoar, ter paciência
-            e permanecer cada dia mais perto de Ti.
-
-            Que minha vida reflita o Teu amor e que eu possa
-            crescer na fé, na verdade e na obediência.
-
+            "Senhor Jesus, ajuda-me a reconhecer aquilo que precisa
+            mudar em minha vida. Dá-me força para resistir às tentações,
+            sabedoria para escolher o que é certo e humildade para
+            reconhecer meus erros. Ajuda-me a amar o próximo, perdoar,
+            ter paciência e permanecer cada dia mais perto de Ti.
             Amém."
         </p>
 
@@ -1586,25 +1300,17 @@ footer{
 </section>
 
 <footer>
-
     <strong>✝ Caminho com Jesus</strong>
-
     <br><br>
-
     Um espaço para reflexão, fé e conhecimento da Bíblia.
-
 </footer>
 
 </div>
-
 </main>
 
 <script>
 
-/* BUSCA */
-
 const search = document.getElementById("search");
-
 const cards = document.querySelectorAll(".sin-card");
 
 search.addEventListener("input",function(){
@@ -1613,10 +1319,8 @@ search.addEventListener("input",function(){
 
     cards.forEach(card=>{
 
-        const texto = card.textContent.toLowerCase();
-
         card.style.display =
-            texto.includes(termo)
+            card.textContent.toLowerCase().includes(termo)
             ? ""
             : "none";
 
@@ -1624,16 +1328,11 @@ search.addEventListener("input",function(){
 
 });
 
-
-/* FILTROS */
-
 function filtrar(categoria,botao){
 
-    document
-        .querySelectorAll(".filter")
-        .forEach(btn=>{
-            btn.classList.remove("active");
-        });
+    document.querySelectorAll(".filter").forEach(btn=>{
+        btn.classList.remove("active");
+    });
 
     botao.classList.add("active");
 
@@ -1641,25 +1340,15 @@ function filtrar(categoria,botao){
 
     cards.forEach(card=>{
 
-        if(categoria==="todos"){
-
-            card.style.display="";
-
-        }else{
-
-            card.style.display =
-                card.dataset.category===categoria
-                ? ""
-                : "none";
-
-        }
+        card.style.display =
+            categoria==="todos" ||
+            card.dataset.category===categoria
+            ? ""
+            : "none";
 
     });
 
 }
-
-
-/* VERSÍCULOS */
 
 const versiculos=[
 
@@ -1699,9 +1388,7 @@ function novoVersiculo(){
 
     const item =
         versiculos[
-            Math.floor(
-                Math.random()*versiculos.length
-            )
+            Math.floor(Math.random()*versiculos.length)
         ];
 
     document.getElementById("dailyText").textContent =
@@ -1709,7 +1396,6 @@ function novoVersiculo(){
 
     document.getElementById("dailyReference").textContent =
         item.referencia;
-
 }
 
 </script>
