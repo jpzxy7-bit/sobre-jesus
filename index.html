@@ -1,1261 +1,778 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Bíblia | Caminho com Jesus</title>
-
-<meta name="description"
-content="Leia a Bíblia, pesquise palavras e salve seus grifos diretamente no navegador.">
-
-<!-- Segurança -->
 <meta http-equiv="Content-Security-Policy"
-content="
-default-src 'self';
-script-src 'self' 'unsafe-inline';
-style-src 'self' 'unsafe-inline';
-img-src 'self' data:;
-font-src 'self';
-connect-src 'none';
-object-src 'none';
-frame-src 'none';
-media-src 'self';
-base-uri 'self';
-form-action 'none';
-worker-src 'none';
-manifest-src 'none';
-upgrade-insecure-requests;
-">
+content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';">
 
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta name="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-<meta http-equiv="Referrer-Policy"
-content="strict-origin-when-cross-origin">
-
-<meta http-equiv="Permissions-Policy"
-content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
+<title>Bíblia Sagrada | Caminho com Jesus</title>
 
 <style>
-
-:root{
-    --bg:#08090d;
-    --card:#151823;
-    --text:#f5f5f5;
-    --muted:#a9adba;
-    --gold:#d6ad60;
-    --gold2:#f1ce83;
-    --border:rgba(255,255,255,.08);
-    --highlight:#6d5725;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.light{
-    --bg:#f5f3ee;
-    --card:#ffffff;
-    --text:#171717;
-    --muted:#626262;
-    --border:rgba(0,0,0,.1);
-    --highlight:#ead58d;
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f5f1e8;
+    color: #2b241b;
+    transition: .3s;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+header {
+    background: #17130f;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-html{
-    scroll-behavior:smooth;
+.logo {
+    font-size: 22px;
+    font-weight: bold;
 }
 
-body{
-    font-family:Georgia,"Times New Roman",serif;
-    background:var(--bg);
-    color:var(--text);
+nav {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    padding:15px;
-    background:rgba(8,9,13,.94);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid var(--border);
+nav a,
+nav button {
+    color: white;
+    background: transparent;
+    border: 1px solid #777;
+    padding: 9px 13px;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.top{
-    max-width:1200px;
-    margin:auto;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+nav a:hover,
+nav button:hover {
+    background: #333;
 }
 
-.logo{
-    color:var(--gold);
-    font-size:22px;
-    font-weight:bold;
+.hero {
+    text-align: center;
+    padding: 55px 20px 35px;
+    background:
+        linear-gradient(rgba(20,15,10,.68), rgba(20,15,10,.68)),
+        url("imagens/biblia.jpg") center/cover;
+    color: white;
 }
 
-.actions{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
+.hero h1 {
+    font-size: clamp(34px, 6vw, 60px);
+    margin-bottom: 12px;
 }
 
-button,
+.hero p {
+    font-size: 18px;
+}
+
+.controls {
+    max-width: 1100px;
+    margin: 25px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr auto;
+    gap: 12px;
+}
+
 select,
-input{
-    font-family:Arial,sans-serif;
-}
-
-button,
-select{
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    padding:9px 13px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-button:hover{
-    border-color:var(--gold);
-}
-
-main{
-    max-width:1100px;
-    margin:auto;
-    padding:40px 20px 100px;
-}
-
-.intro{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.intro h1{
-    color:var(--gold);
-    font-size:45px;
-    margin-bottom:10px;
-}
-
-.intro p{
-    color:var(--muted);
-    font-family:Arial,sans-serif;
-}
-
-.controls{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:15px;
-    padding:18px;
-    margin-bottom:25px;
-
-    display:grid;
-    grid-template-columns:1fr 1fr 2fr auto;
-    gap:10px;
-}
-
 input,
-select{
-    width:100%;
-    padding:12px;
-    outline:none;
+button {
+    font-family: inherit;
 }
 
-input:focus,
-select:focus{
-    border-color:var(--gold);
+select,
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #c8bda9;
+    border-radius: 9px;
+    background: white;
+    color: #2b241b;
 }
 
-#reader{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:18px;
-    padding:35px;
-    min-height:400px;
+.controls button,
+.action-button {
+    border: none;
+    border-radius: 9px;
+    padding: 13px 18px;
+    cursor: pointer;
+    background: #6f542f;
+    color: white;
+    font-weight: bold;
 }
 
-.chapter-title{
-    text-align:center;
-    color:var(--gold);
-    font-size:32px;
-    margin-bottom:25px;
+.reader {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
 }
 
-.verse{
-    padding:8px 5px;
-    margin:2px 0;
-    border-radius:6px;
-    line-height:1.9;
-    cursor:text;
+.chapter-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
 }
 
-.verse:hover{
-    background:rgba(214,173,96,.05);
+.verse {
+    background: rgba(255,255,255,.7);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 9px;
+    line-height: 1.8;
+    font-size: 18px;
+    border: 1px solid #e2d8c8;
 }
 
-.verse-number{
-    color:var(--gold);
-    font-weight:bold;
-    font-family:Arial,sans-serif;
-    font-size:13px;
-    margin-right:8px;
+.verse-number {
+    font-weight: bold;
+    color: #806238;
+    margin-right: 8px;
 }
 
-.highlight{
-    background:var(--highlight);
-    border-radius:4px;
-    padding:2px 3px;
+mark.highlight {
+    background: #f3d76b;
+    color: #201a11;
+    border-radius: 3px;
+    padding: 1px 2px;
 }
 
-.toolbar{
-    position:fixed;
-    bottom:20px;
-    left:50%;
-    transform:translateX(-50%);
-    z-index:200;
-
-    display:flex;
-    gap:8px;
-    align-items:center;
-
-    padding:10px;
-
-    background:rgba(10,10,12,.96);
-    border:1px solid rgba(214,173,96,.35);
-    border-radius:15px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.4);
+.toolbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #17130f;
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    gap: 8px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+    z-index: 20;
 }
 
-.toolbar span{
-    color:white;
-    font-family:Arial,sans-serif;
-    font-size:13px;
-    padding:0 5px;
+.toolbar button {
+    border: none;
+    padding: 11px 14px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
-.gold-btn{
-    background:var(--gold);
-    color:#111;
-    border-color:var(--gold);
-    font-weight:bold;
+.info {
+    max-width: 900px;
+    margin: 30px auto 100px;
+    padding: 20px;
+    text-align: center;
+    color: #6c6255;
 }
 
-.empty{
-    text-align:center;
-    padding:70px 20px;
-    color:var(--muted);
-    font-family:Arial,sans-serif;
+.search-results {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
 }
 
-.empty strong{
-    display:block;
-    color:var(--gold);
-    font-size:22px;
-    margin-bottom:10px;
+.result {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    border: 1px solid #ddd;
 }
 
-footer{
-    text-align:center;
-    padding:40px;
-    color:var(--muted);
-    font-family:Arial,sans-serif;
-    border-top:1px solid var(--border);
+.dark {
+    background: #121212;
+    color: #eee;
 }
 
-@media(max-width:800px){
+.dark .verse {
+    background: #1d1d1d;
+    border-color: #333;
+}
 
-    .controls{
-        grid-template-columns:1fr 1fr;
+.dark select,
+.dark input {
+    background: #222;
+    color: white;
+    border-color: #444;
+}
+
+.dark .result {
+    background: #1d1d1d;
+    border-color: #333;
+}
+
+.dark .info {
+    color: #aaa;
+}
+
+@media(max-width:800px) {
+    .controls {
+        grid-template-columns: 1fr;
+        padding: 15px;
     }
 
-    #reader{
-        padding:20px;
+    header {
+        flex-direction: column;
     }
 
+    .hero {
+        padding: 45px 15px;
+    }
+
+    .verse {
+        font-size: 17px;
+    }
 }
-
-@media(max-width:550px){
-
-    .top{
-        flex-direction:column;
-    }
-
-    .controls{
-        grid-template-columns:1fr;
-    }
-
-    .intro h1{
-        font-size:36px;
-    }
-
-    #reader{
-        padding:15px;
-    }
-
-    .toolbar{
-        width:calc(100% - 20px);
-        justify-content:center;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
 <header>
+    <div class="logo">✝ Caminho com Jesus</div>
 
-<div class="top">
-
-<div class="logo">
-✝ Caminho com Jesus
-</div>
-
-<div class="actions">
-
-<button
-type="button"
-onclick="window.location.href='index.html'">
-Início
-</button>
-
-<button
-type="button"
-onclick="toggleTheme()">
-☀ / 🌙
-</button>
-
-<button
-type="button"
-onclick="clearHighlights()">
-Apagar grifos
-</button>
-
-</div>
-
-</div>
-
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#jesus">Jesus</a>
+        <a href="index.html#pecados">Pecados</a>
+        <button onclick="alternarTema()">🌙 Tema</button>
+    </nav>
 </header>
 
+<section class="hero">
+    <h1>📖 Bíblia Sagrada</h1>
+    <p>Leia, pesquise e marque os versículos importantes para você.</p>
+</section>
 
-<main>
+<section class="controls">
 
-<div class="intro">
+    <select id="livro">
+        <option value="">Escolha o livro</option>
+    </select>
 
-<h1>📖 Bíblia</h1>
+    <select id="capitulo">
+        <option value="">Capítulo</option>
+    </select>
 
-<p>
-Leia, pesquise e grife seus versículos favoritos.
-Seus grifos ficam salvos neste navegador.
-</p>
+    <input
+        id="busca"
+        type="search"
+        placeholder="Pesquisar na Bíblia..."
+    >
 
-</div>
+    <button onclick="pesquisar()">Pesquisar</button>
 
+</section>
 
-<div class="controls">
+<div id="resultados" class="search-results"></div>
 
-<select id="bookSelect">
+<main class="reader">
 
-<option value="">
-Livro
-</option>
+    <h2 id="tituloCapitulo" class="chapter-title">
+        Escolha um livro e capítulo
+    </h2>
 
-</select>
-
-
-<select id="chapterSelect">
-
-<option value="">
-Capítulo
-</option>
-
-</select>
-
-
-<input
-id="search"
-type="search"
-placeholder="🔎 Procurar palavra..."
-autocomplete="off"
-spellcheck="false"
->
-
-
-<button
-class="gold-btn"
-type="button"
-onclick="searchBible()">
-Buscar
-</button>
-
-</div>
-
-
-<div id="reader">
-
-<div class="empty">
-
-<strong>📖 Sua Bíblia</strong>
-
-Para carregar a Bíblia, coloque o arquivo
-<strong>bibliadados.json</strong> na mesma pasta
-deste arquivo.
-
-</div>
-
-</div>
+    <div id="textoBiblia"></div>
 
 </main>
 
-
 <div class="toolbar">
-
-<span>
-Selecione um trecho:
-</span>
-
-<button
-class="gold-btn"
-type="button"
-onclick="highlightSelection()">
-🖍️ Grifar
-</button>
-
-<button
-type="button"
-onclick="removeSelectionHighlight()">
-Desgrifar
-</button>
-
+    <button onclick="grifar()">🖍️ Grifar</button>
+    <button onclick="desgrifar()">↩️ Desgrifar</button>
+    <button onclick="limparGrifos()">🗑️ Limpar</button>
 </div>
 
-
-<footer>
-
-<p>
-✝ Caminho com Jesus
-</p>
-
-<p>
-Seus grifos são armazenados apenas neste navegador.
-</p>
-
-</footer>
-
+<div class="info">
+    <p>
+        Seus grifos ficam salvos somente neste navegador.
+    </p>
+</div>
 
 <script>
 
-/*
-====================================================
-BÍBLIA LOCAL
-====================================================
+let biblia = {};
+let livroAtual = "";
+let capituloAtual = "";
 
-O site procura:
+const livrosOrdem = [
+    "Gênesis",
+    "Êxodo",
+    "Levítico",
+    "Números",
+    "Deuteronômio",
+    "Josué",
+    "Juízes",
+    "Rute",
+    "1 Samuel",
+    "2 Samuel",
+    "1 Reis",
+    "2 Reis",
+    "1 Crônicas",
+    "2 Crônicas",
+    "Esdras",
+    "Neemias",
+    "Ester",
+    "Jó",
+    "Salmos",
+    "Provérbios",
+    "Eclesiastes",
+    "Cânticos",
+    "Isaías",
+    "Jeremias",
+    "Lamentações",
+    "Ezequiel",
+    "Daniel",
+    "Oséias",
+    "Joel",
+    "Amós",
+    "Obadias",
+    "Jonas",
+    "Miquéias",
+    "Naum",
+    "Habacuque",
+    "Sofonias",
+    "Ageu",
+    "Zacarias",
+    "Malaquias",
 
-bibliadados.json
+    "Mateus",
+    "Marcos",
+    "Lucas",
+    "João",
+    "Atos",
+    "Romanos",
+    "1 Coríntios",
+    "2 Coríntios",
+    "Gálatas",
+    "Efésios",
+    "Filipenses",
+    "Colossenses",
+    "1 Tessalonicenses",
+    "2 Tessalonicenses",
+    "1 Timóteo",
+    "2 Timóteo",
+    "Tito",
+    "Filemom",
+    "Hebreus",
+    "Tiago",
+    "1 Pedro",
+    "2 Pedro",
+    "1 João",
+    "2 João",
+    "3 João",
+    "Judas",
+    "Apocalipse"
+];
 
-na mesma pasta.
+const livroSelect = document.getElementById("livro");
+const capituloSelect = document.getElementById("capitulo");
+const textoBiblia = document.getElementById("textoBiblia");
+const titulo = document.getElementById("tituloCapitulo");
 
-Formato esperado:
+async function iniciar() {
 
-{
-  "Gênesis": {
-    "1": [
-      "No princípio..."
-    ],
-    "2": [
-      "Assim foram..."
-    ]
-  }
-}
+    try {
 
-Cada item do array representa um versículo.
-*/
+        const resposta = await fetch("bibliadados.json");
 
-
-let bible = {};
-
-let currentBook = "";
-
-let currentChapter = "";
-
-
-/*
-CARREGAR BÍBLIA
-*/
-
-async function loadBible(){
-
-    try{
-
-        const response =
-        await fetch("bibliadados.json");
-
-        if(!response.ok){
+        if (!resposta.ok) {
             throw new Error("Arquivo não encontrado");
         }
 
-        bible =
-        await response.json();
+        biblia = await resposta.json();
 
-        populateBooks();
+        livrosOrdem.forEach(nome => {
 
-    }catch(error){
+            if (biblia[nome]) {
 
-        document.getElementById("reader").innerHTML = `
+                const option = document.createElement("option");
 
-        <div class="empty">
+                option.value = nome;
+                option.textContent = nome;
 
-        <strong>📖 Bíblia não carregada</strong>
-
-        Coloque o arquivo:
-
-        <br><br>
-
-        <b>bibliadados.json</b>
-
-        <br><br>
-
-        na mesma pasta deste arquivo.
-
-        </div>
-
-        `;
-
-    }
-
-}
-
-
-/*
-PREENCHER LIVROS
-*/
-
-function populateBooks(){
-
-    const select =
-    document.getElementById("bookSelect");
-
-    select.innerHTML =
-    '<option value="">Livro</option>';
-
-    Object.keys(bible).forEach(book=>{
-
-        const option =
-        document.createElement("option");
-
-        option.value = book;
-        option.textContent = book;
-
-        select.appendChild(option);
-
-    });
-
-}
-
-
-/*
-SELECIONAR LIVRO
-*/
-
-document
-.getElementById("bookSelect")
-.addEventListener("change",function(){
-
-    currentBook = this.value;
-
-    const chapterSelect =
-    document.getElementById("chapterSelect");
-
-    chapterSelect.innerHTML =
-    '<option value="">Capítulo</option>';
-
-    if(!currentBook){
-
-        return;
-
-    }
-
-    Object.keys(bible[currentBook])
-    .forEach(chapter=>{
-
-        const option =
-        document.createElement("option");
-
-        option.value = chapter;
-        option.textContent =
-        "Capítulo "+chapter;
-
-        chapterSelect.appendChild(option);
-
-    });
-
-});
-
-
-/*
-SELECIONAR CAPÍTULO
-*/
-
-document
-.getElementById("chapterSelect")
-.addEventListener("change",function(){
-
-    currentChapter = this.value;
-
-    if(currentBook && currentChapter){
-
-        renderChapter(
-            currentBook,
-            currentChapter
-        );
-
-    }
-
-});
-
-
-/*
-MOSTRAR CAPÍTULO
-*/
-
-function renderChapter(book,chapter){
-
-    const reader =
-    document.getElementById("reader");
-
-    reader.innerHTML = "";
-
-    const title =
-    document.createElement("h2");
-
-    title.className =
-    "chapter-title";
-
-    title.textContent =
-    book+" "+chapter;
-
-    reader.appendChild(title);
-
-
-    const verses =
-    bible[book][chapter];
-
-
-    verses.forEach((text,index)=>{
-
-        const verse =
-        document.createElement("div");
-
-        verse.className="verse";
-
-        verse.dataset.book=book;
-
-        verse.dataset.chapter=chapter;
-
-        verse.dataset.verse=index+1;
-
-        const number =
-        document.createElement("span");
-
-        number.className="verse-number";
-
-        number.textContent =
-        index+1;
-
-        verse.appendChild(number);
-
-
-        const content =
-        document.createElement("span");
-
-        content.textContent=text;
-
-        verse.appendChild(content);
-
-        reader.appendChild(verse);
-
-    });
-
-
-    restoreHighlights();
-
-}
-
-
-/*
-GRIFAR SELEÇÃO
-*/
-
-function highlightSelection(){
-
-    const selection =
-    window.getSelection();
-
-    if(!selection ||
-       selection.rangeCount===0 ||
-       selection.isCollapsed){
-
-        alert(
-        "Selecione primeiro o texto que deseja grifar."
-        );
-
-        return;
-
-    }
-
-
-    const range =
-    selection.getRangeAt(0);
-
-    const container =
-    range.commonAncestorContainer;
-
-
-    const verse =
-    container.nodeType===1
-    ? container.closest(".verse")
-    : container.parentElement.closest(".verse");
-
-
-    if(!verse){
-
-        alert(
-        "Selecione um trecho dentro de um versículo."
-        );
-
-        return;
-
-    }
-
-
-    const span =
-    document.createElement("mark");
-
-    span.className="highlight";
-
-
-    try{
-
-        range.surroundContents(span);
-
-    }catch(error){
-
-        alert(
-        "Selecione um trecho dentro do mesmo versículo."
-        );
-
-        return;
-
-    }
-
-
-    saveHighlights();
-
-    selection.removeAllRanges();
-
-}
-
-
-/*
-SALVAR GRIFOS
-*/
-
-function saveHighlights(){
-
-    const highlights = [];
-
-    document
-    .querySelectorAll(".highlight")
-    .forEach(mark=>{
-
-        const verse =
-        mark.closest(".verse");
-
-        if(!verse) return;
-
-        highlights.push({
-
-            book:verse.dataset.book,
-
-            chapter:verse.dataset.chapter,
-
-            verse:verse.dataset.verse,
-
-            text:mark.textContent
+                livroSelect.appendChild(option);
+            }
 
         });
 
+    } catch (erro) {
+
+        textoBiblia.innerHTML = `
+            <div class="verse">
+                <strong>A Bíblia ainda não foi carregada.</strong>
+                <br><br>
+                Coloque o arquivo <b>bibliadados.json</b>
+                na mesma pasta deste arquivo.
+            </div>
+        `;
+    }
+}
+
+livroSelect.addEventListener("change", () => {
+
+    livroAtual = livroSelect.value;
+
+    capituloSelect.innerHTML =
+        '<option value="">Capítulo</option>';
+
+    if (!livroAtual || !biblia[livroAtual]) return;
+
+    Object.keys(biblia[livroAtual]).forEach(cap => {
+
+        const option = document.createElement("option");
+
+        option.value = cap;
+        option.textContent = cap;
+
+        capituloSelect.appendChild(option);
+    });
+});
+
+capituloSelect.addEventListener("change", () => {
+
+    capituloAtual = capituloSelect.value;
+
+    mostrarCapitulo();
+});
+
+function mostrarCapitulo() {
+
+    if (!livroAtual || !capituloAtual) return;
+
+    const versiculos = biblia[livroAtual][capituloAtual];
+
+    titulo.textContent =
+        livroAtual + " " + capituloAtual;
+
+    textoBiblia.innerHTML = "";
+
+    versiculos.forEach((texto, index) => {
+
+        const div = document.createElement("div");
+
+        div.className = "verse";
+
+        div.dataset.versiculo = index + 1;
+
+        div.innerHTML =
+            `<span class="verse-number">${index + 1}</span>` +
+            escapeHTML(texto);
+
+        textoBiblia.appendChild(div);
     });
 
-
-    try{
-
-        localStorage.setItem(
-            "caminhoJesusHighlights",
-            JSON.stringify(highlights)
-        );
-
-    }catch(error){
-
-        console.warn(
-            "Não foi possível salvar os grifos."
-        );
-
-    }
-
+    restaurarGrifos();
 }
 
+function escapeHTML(texto) {
 
-/*
-RESTAURAR GRIFOS
-*/
+    return texto
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+}
 
-function restoreHighlights(){
+function grifar() {
 
-    let saved=[];
+    const selecao = window.getSelection();
 
-    try{
-
-        saved =
-        JSON.parse(
-            localStorage.getItem(
-                "caminhoJesusHighlights"
-            )
-        ) || [];
-
-    }catch(error){
-
-        saved=[];
-
+    if (!selecao || selecao.rangeCount === 0) {
+        alert("Selecione um trecho do versículo primeiro.");
+        return;
     }
 
+    const range = selecao.getRangeAt(0);
 
-    saved.forEach(item=>{
+    if (!textoBiblia.contains(range.commonAncestorContainer)) {
+        return;
+    }
 
-        if(
-            item.book !== currentBook ||
-            item.chapter !== currentChapter
-        ){
+    const mark = document.createElement("mark");
 
-            return;
+    mark.className = "highlight";
 
-        }
+    try {
 
+        range.surroundContents(mark);
 
-        const verse =
-        document.querySelector(
-        `.verse[data-verse="${CSS.escape(item.verse)}"]`
+    } catch {
+
+        alert(
+            "Selecione apenas um trecho dentro do mesmo versículo."
         );
-
-
-        if(!verse) return;
-
-
-        const textNodes =
-        getTextNodes(verse);
-
-
-        for(const node of textNodes){
-
-            const text =
-            node.textContent;
-
-            const position =
-            text.indexOf(item.text);
-
-            if(position===-1){
-
-                continue;
-
-            }
-
-
-            const range =
-            document.createRange();
-
-            range.setStart(
-                node,
-                position
-            );
-
-            range.setEnd(
-                node,
-                position + item.text.length
-            );
-
-
-            const mark =
-            document.createElement("mark");
-
-            mark.className="highlight";
-
-
-            try{
-
-                range.surroundContents(mark);
-
-            }catch(error){}
-
-            break;
-
-        }
-
-    });
-
-}
-
-
-/*
-PEGAR NÓS DE TEXTO
-*/
-
-function getTextNodes(element){
-
-    const nodes=[];
-
-    const walker =
-    document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT
-    );
-
-    let node;
-
-    while(
-        node=walker.nextNode()
-    ){
-
-        if(
-            !node.parentElement.closest(".verse-number") &&
-            !node.parentElement.classList.contains("highlight")
-        ){
-
-            nodes.push(node);
-
-        }
-
-    }
-
-    return nodes;
-
-}
-
-
-/*
-DESGRIFAR SELEÇÃO
-*/
-
-function removeSelectionHighlight(){
-
-    const selection =
-    window.getSelection();
-
-    if(!selection ||
-       selection.rangeCount===0){
 
         return;
-
     }
 
+    salvarGrifos();
 
-    let node =
-    selection.anchorNode;
-
-
-    if(!node){
-
-        return;
-
-    }
-
-
-    const mark =
-    node.parentElement.closest(".highlight");
-
-
-    if(mark){
-
-        const parent =
-        mark.parentNode;
-
-        while(mark.firstChild){
-
-            parent.insertBefore(
-                mark.firstChild,
-                mark
-            );
-
-        }
-
-        parent.removeChild(mark);
-
-        saveHighlights();
-
-    }
-
+    selecao.removeAllRanges();
 }
 
+function desgrifar() {
 
-/*
-APAGAR TODOS OS GRIFOS
-*/
+    const selecao = window.getSelection();
 
-function clearHighlights(){
-
-    const confirmation =
-    confirm(
-    "Tem certeza que deseja apagar todos os grifos salvos?"
-    );
-
-    if(!confirmation){
-
+    if (!selecao || selecao.rangeCount === 0) {
+        alert("Selecione o trecho grifado.");
         return;
-
     }
 
+    let elemento = selecao.anchorNode;
 
-    try{
+    if (elemento && elemento.nodeType === 3) {
+        elemento = elemento.parentElement;
+    }
 
-        localStorage.removeItem(
-            "caminhoJesusHighlights"
-        );
+    if (
+        elemento &&
+        elemento.classList &&
+        elemento.classList.contains("highlight")
+    ) {
 
-    }catch(error){}
+        elemento.replaceWith(...elemento.childNodes);
 
+        salvarGrifos();
+    }
+}
+
+function salvarGrifos() {
+
+    const grifos = [];
 
     document
-    .querySelectorAll(".highlight")
-    .forEach(mark=>{
+        .querySelectorAll(".highlight")
+        .forEach(mark => {
 
-        const parent =
-        mark.parentNode;
+            const verso = mark.closest(".verse");
 
-        while(mark.firstChild){
+            if (!verso) return;
 
-            parent.insertBefore(
-                mark.firstChild,
-                mark
-            );
-
-        }
-
-        parent.removeChild(mark);
-
-    });
-
-}
-
-
-/*
-BUSCA
-*/
-
-function searchBible(){
-
-    const query =
-    document
-    .getElementById("search")
-    .value
-    .trim()
-    .toLowerCase();
-
-
-    if(!query){
-
-        return;
-
-    }
-
-
-    const results=[];
-
-
-    Object.keys(bible).forEach(book=>{
-
-        Object.keys(bible[book])
-        .forEach(chapter=>{
-
-            bible[book][chapter]
-            .forEach((verse,index)=>{
-
-                if(
-                    verse
-                    .toLowerCase()
-                    .includes(query)
-                ){
-
-                    results.push({
-
-                        book:book,
-
-                        chapter:chapter,
-
-                        verse:index+1,
-
-                        text:verse
-
-                    });
-
-                }
-
+            grifos.push({
+                livro: livroAtual,
+                capitulo: capituloAtual,
+                versiculo: verso.dataset.versiculo,
+                texto: mark.textContent
             });
 
         });
 
-    });
-
-
-    showSearchResults(results,query);
-
-}
-
-
-/*
-MOSTRAR RESULTADOS
-*/
-
-function showSearchResults(results,query){
-
-    const reader =
-    document.getElementById("reader");
-
-    reader.innerHTML="";
-
-
-    const title =
-    document.createElement("h2");
-
-    title.className="chapter-title";
-
-    title.textContent =
-    results.length+
-    " resultado(s) para: "+
-    query;
-
-    reader.appendChild(title);
-
-
-    if(results.length===0){
-
-        const empty =
-        document.createElement("div");
-
-        empty.className="empty";
-
-        empty.textContent=
-        "Nenhum versículo encontrado.";
-
-        reader.appendChild(empty);
-
-        return;
-
-    }
-
-
-    results.slice(0,100)
-    .forEach(result=>{
-
-        const verse =
-        document.createElement("div");
-
-        verse.className="verse";
-
-        verse.dataset.book=result.book;
-
-        verse.dataset.chapter=result.chapter;
-
-        verse.dataset.verse=result.verse;
-
-
-        const number =
-        document.createElement("span");
-
-        number.className="verse-number";
-
-        number.textContent=
-        result.book+
-        " "+
-        result.chapter+
-        ":"+
-        result.verse;
-
-        verse.appendChild(number);
-
-
-        const content =
-        document.createElement("span");
-
-        content.textContent=
-        result.text;
-
-        verse.appendChild(content);
-
-
-        reader.appendChild(verse);
-
-    });
-
-}
-
-
-/*
-TEMA
-*/
-
-function toggleTheme(){
-
-    document.body.classList.toggle("light");
-
-    try{
-
-        localStorage.setItem(
-            "bibleTheme",
-            document.body.classList.contains("light")
-            ? "light"
-            : "dark"
+    const todos =
+        JSON.parse(
+            localStorage.getItem("caminhoJesusHighlights") || "[]"
         );
 
-    }catch(error){}
+    const outros = todos.filter(item =>
+        !(
+            item.livro === livroAtual &&
+            item.capitulo === capituloAtual
+        )
+    );
 
+    localStorage.setItem(
+        "caminhoJesusHighlights",
+        JSON.stringify([...outros, ...grifos])
+    );
 }
 
+function restaurarGrifos() {
 
-try{
+    const todos =
+        JSON.parse(
+            localStorage.getItem("caminhoJesusHighlights") || "[]"
+        );
 
-    if(
-        localStorage.getItem("bibleTheme")
-        ==="light"
-    ){
+    const atuais = todos.filter(item =>
+        item.livro === livroAtual &&
+        item.capitulo === capituloAtual
+    );
 
-        document.body.classList.add("light");
+    atuais.forEach(item => {
 
+        const verso =
+            document.querySelector(
+                `.verse[data-versiculo="${item.versiculo}"]`
+            );
+
+        if (!verso) return;
+
+        destacarTexto(verso, item.texto);
+    });
+}
+
+function destacarTexto(elemento, texto) {
+
+    const walker =
+        document.createTreeWalker(
+            elemento,
+            NodeFilter.SHOW_TEXT
+        );
+
+    let node;
+
+    while (node = walker.nextNode()) {
+
+        const inicio = node.nodeValue.indexOf(texto);
+
+        if (inicio === -1) continue;
+
+        const range = document.createRange();
+
+        range.setStart(node, inicio);
+        range.setEnd(node, inicio + texto.length);
+
+        const mark = document.createElement("mark");
+
+        mark.className = "highlight";
+
+        range.surroundContents(mark);
+
+        break;
+    }
+}
+
+function limparGrifos() {
+
+    if (!confirm("Apagar todos os grifos salvos?")) {
+        return;
     }
 
-}catch(error){}
+    localStorage.removeItem("caminhoJesusHighlights");
 
+    document
+        .querySelectorAll(".highlight")
+        .forEach(mark => {
+            mark.replaceWith(...mark.childNodes);
+        });
+}
 
-/*
-INICIAR
-*/
+function pesquisar() {
 
-loadBible();
+    const termo =
+        document
+            .getElementById("busca")
+            .value
+            .trim()
+            .toLowerCase();
+
+    const resultados =
+        document.getElementById("resultados");
+
+    resultados.innerHTML = "";
+
+    if (!termo) return;
+
+    let quantidade = 0;
+
+    for (const livro of Object.keys(biblia)) {
+
+        for (const capitulo of Object.keys(biblia[livro])) {
+
+            const versiculos =
+                biblia[livro][capitulo];
+
+            versiculos.forEach((texto, index) => {
+
+                if (
+                    texto
+                        .toLowerCase()
+                        .includes(termo)
+                ) {
+
+                    quantidade++;
+
+                    if (quantidade <= 100) {
+
+                        const div =
+                            document.createElement("div");
+
+                        div.className = "result";
+
+                        div.innerHTML =
+                            `<strong>${livro} ${capitulo}:${index + 1}</strong>
+                            <br>${escapeHTML(texto)}`;
+
+                        div.onclick = () => {
+
+                            livroAtual = livro;
+                            capituloAtual = capitulo;
+
+                            livroSelect.value = livro;
+
+                            livroSelect.dispatchEvent(
+                                new Event("change")
+                            );
+
+                            capituloSelect.value = capitulo;
+
+                            mostrarCapitulo();
+
+                            window.scrollTo({
+                                top: 350,
+                                behavior: "smooth"
+                            });
+                        };
+
+                        resultados.appendChild(div);
+                    }
+                }
+            });
+        }
+    }
+
+    if (quantidade === 0) {
+
+        resultados.innerHTML =
+            "<p>Nenhum resultado encontrado.</p>";
+
+    } else if (quantidade > 100) {
+
+        resultados.innerHTML +=
+            `<p>Mostrando os primeiros 100 resultados de ${quantidade}.</p>`;
+    }
+}
+
+function alternarTema() {
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "bibleTheme",
+        document.body.classList.contains("dark")
+            ? "dark"
+            : "light"
+    );
+}
+
+if (localStorage.getItem("bibleTheme") === "dark") {
+    document.body.classList.add("dark");
+}
+
+iniciar();
 
 </script>
 
 </body>
-
 </html>
-```
