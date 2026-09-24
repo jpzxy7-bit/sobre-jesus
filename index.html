@@ -8,12 +8,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Caminho com Jesus | Fé, Bíblia e Transformação</title>
+<title>Bíblia | Caminho com Jesus</title>
 
 <meta name="description"
-content="Um espaço para conhecer os ensinamentos de Jesus, compreender o pecado e crescer na fé cristã.">
+content="Leia a Bíblia, pesquise palavras e salve seus grifos diretamente no navegador.">
 
-<!-- PROTEÇÕES DE SEGURANÇA -->
+<!-- Segurança -->
 <meta http-equiv="Content-Security-Policy"
 content="
 default-src 'self';
@@ -44,588 +44,267 @@ content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth
 
 :root{
     --bg:#08090d;
-    --bg2:#10121a;
     --card:#151823;
     --text:#f5f5f5;
     --muted:#a9adba;
     --gold:#d6ad60;
     --gold2:#f1ce83;
     --border:rgba(255,255,255,.08);
-    --shadow:0 20px 60px rgba(0,0,0,.35);
+    --highlight:#6d5725;
 }
 
 .light{
     --bg:#f5f3ee;
-    --bg2:#ffffff;
     --card:#ffffff;
     --text:#171717;
     --muted:#626262;
     --border:rgba(0,0,0,.1);
-    --shadow:0 15px 40px rgba(0,0,0,.12);
+    --highlight:#ead58d;
 }
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
+}
+
+html{
     scroll-behavior:smooth;
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Georgia,"Times New Roman",serif;
     background:var(--bg);
     color:var(--text);
-    line-height:1.7;
-    overflow-x:hidden;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-button{
-    font-family:inherit;
 }
 
 header{
-    min-height:100vh;
-    position:relative;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:120px 25px 70px;
-    overflow:hidden;
-
-    background:
-    radial-gradient(
-        circle at center,
-        rgba(214,173,96,.16),
-        transparent 35%
-    ),
-    linear-gradient(
-        135deg,
-        #08090d,
-        #15110a,
-        #08090d
-    );
-}
-
-header::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(
-        circle at center,
-        transparent 15%,
-        rgba(0,0,0,.55)
-    );
-    pointer-events:none;
-}
-
-nav{
-    position:fixed;
+    position:sticky;
     top:0;
-    left:0;
-    width:100%;
-    z-index:999;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:25px;
-
-    padding:17px 20px;
-
-    background:rgba(5,5,7,.88);
+    z-index:100;
+    padding:15px;
+    background:rgba(8,9,13,.94);
     backdrop-filter:blur(15px);
-
-    border-bottom:1px solid rgba(255,255,255,.07);
+    border-bottom:1px solid var(--border);
 }
 
-nav a{
-    color:white;
-    font-size:14px;
-    font-weight:bold;
-    transition:.25s;
-}
-
-nav a:hover{
-    color:var(--gold2);
-}
-
-.theme{
-    border:1px solid rgba(255,255,255,.2);
-    background:transparent;
-    color:white;
-    padding:8px 12px;
-    border-radius:20px;
-    cursor:pointer;
-}
-
-.hero{
-    position:relative;
-    z-index:2;
-    max-width:950px;
-    animation:fadeUp 1.2s ease;
-}
-
-.cross{
-    font-size:65px;
-    color:var(--gold);
-    margin-bottom:15px;
-}
-
-.hero h1{
-    font-size:clamp(42px,7vw,78px);
-    line-height:1.05;
-    margin-bottom:25px;
-}
-
-.hero h1 span{
-    color:var(--gold);
-}
-
-.hero p{
-    color:#ddd;
-    font-size:20px;
-    max-width:720px;
-    margin:auto auto 35px;
-}
-
-.buttons{
+.top{
+    max-width:1200px;
+    margin:auto;
     display:flex;
-    justify-content:center;
+    align-items:center;
+    justify-content:space-between;
     gap:15px;
+}
+
+.logo{
+    color:var(--gold);
+    font-size:22px;
+    font-weight:bold;
+}
+
+.actions{
+    display:flex;
+    gap:8px;
     flex-wrap:wrap;
 }
 
-.btn{
-    display:inline-block;
-    padding:14px 26px;
-    border-radius:30px;
-    background:var(--gold);
-    color:#111;
-    font-weight:bold;
-    transition:.3s;
-    border:1px solid var(--gold);
+button,
+select,
+input{
+    font-family:Arial,sans-serif;
+}
+
+button,
+select{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:9px 13px;
+    border-radius:8px;
     cursor:pointer;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 10px 30px rgba(214,173,96,.25);
-}
-
-.btn-outline{
-    background:transparent;
-    color:white;
-}
-
-section{
-    padding:100px 7%;
-}
-
-.title{
-    text-align:center;
-    max-width:800px;
-    margin:0 auto 55px;
-}
-
-.title h2{
-    font-size:clamp(32px,5vw,48px);
-    color:var(--gold);
-    margin-bottom:12px;
-}
-
-.title p{
-    color:var(--muted);
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-}
-
-.jesus-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-    align-items:center;
-}
-
-.jesus-image{
-    min-height:500px;
-    border-radius:25px;
-
-    background:
-    radial-gradient(
-        circle at 50% 35%,
-        rgba(214,173,96,.35),
-        transparent 18%
-    ),
-    linear-gradient(
-        145deg,
-        #241c0e,
-        #08090d 65%
-    );
-
-    box-shadow:var(--shadow);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    font-size:130px;
-}
-
-.jesus-image::after{
-    content:"✝";
-    color:var(--gold);
-}
-
-.jesus-text{
-    background:var(--card);
-    border:1px solid var(--border);
-    padding:40px;
-    border-radius:25px;
-}
-
-.jesus-text h3{
-    font-size:30px;
-    margin-bottom:18px;
-}
-
-.jesus-text p{
-    color:var(--muted);
-    margin-bottom:18px;
-}
-
-.verse{
-    margin-top:25px;
-    padding:25px;
-    border-left:4px solid var(--gold);
-    background:rgba(214,173,96,.07);
-    border-radius:0 12px 12px 0;
-}
-
-.verse p{
-    color:var(--text);
-    font-size:20px;
-    font-style:italic;
-}
-
-.verse small{
-    color:var(--gold);
-}
-
-.search-area{
-    max-width:850px;
-    margin:0 auto 35px;
-}
-
-.search{
-    width:100%;
-    padding:17px 22px;
-    border-radius:30px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--text);
-    outline:none;
-    font-size:16px;
-}
-
-.search:focus{
+button:hover{
     border-color:var(--gold);
 }
 
-.filters{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-bottom:35px;
+main{
+    max-width:1100px;
+    margin:auto;
+    padding:40px 20px 100px;
 }
 
-.filter{
-    cursor:pointer;
-    padding:9px 17px;
-    border-radius:20px;
-    border:1px solid var(--border);
-    background:var(--card);
-    color:var(--muted);
-}
-
-.filter.active,
-.filter:hover{
-    background:var(--gold);
-    color:#111;
-}
-
-.sin-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
-}
-
-.sin-card{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:28px;
-    transition:.35s;
-    position:relative;
-    overflow:hidden;
-}
-
-.sin-card::before{
-    content:"";
-    position:absolute;
-    top:0;
-    left:0;
-    width:100%;
-    height:3px;
-    background:var(--gold);
-}
-
-.sin-card:hover{
-    transform:translateY(-7px);
-    box-shadow:var(--shadow);
-}
-
-.sin-number{
-    font-size:14px;
-    color:var(--gold);
-    font-weight:bold;
-}
-
-.sin-card h3{
-    font-size:25px;
-    margin:7px 0 12px;
-}
-
-.sin-card p{
-    color:var(--muted);
-    margin-bottom:18px;
-}
-
-.info{
-    padding:16px;
-    background:rgba(214,173,96,.07);
-    border-radius:12px;
-    margin-top:12px;
-}
-
-.info strong{
-    color:var(--gold);
-}
-
-.scripture{
-    font-size:13px;
-    color:var(--muted);
-    margin-top:15px;
-}
-
-.steps{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
-}
-
-.step{
-    background:var(--card);
-    border:1px solid var(--border);
-    padding:30px;
-    border-radius:20px;
+.intro{
     text-align:center;
+    margin-bottom:30px;
 }
 
-.step-number{
-    width:50px;
-    height:50px;
-    margin:0 auto 18px;
-    border-radius:50%;
-    background:var(--gold);
-    color:#111;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    font-size:20px;
-}
-
-.step h3{
+.intro h1{
+    color:var(--gold);
+    font-size:45px;
     margin-bottom:10px;
 }
 
-.step p{
+.intro p{
     color:var(--muted);
+    font-family:Arial,sans-serif;
 }
 
-.truth{
-    background:
-    radial-gradient(
-        circle at center,
-        rgba(214,173,96,.15),
-        transparent 35%
-    ),
-    #090a0e;
-}
-
-.truth-box{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-}
-
-.truth-box h2{
-    font-size:clamp(35px,5vw,55px);
-    margin-bottom:20px;
-}
-
-.truth-box p{
-    color:#ddd;
-    font-size:18px;
-}
-
-.prayer{
-    max-width:900px;
-    margin:auto;
-    text-align:center;
-}
-
-.prayer-box{
-    padding:45px;
-    border-radius:25px;
+.controls{
     background:var(--card);
     border:1px solid var(--border);
-    box-shadow:var(--shadow);
+    border-radius:15px;
+    padding:18px;
+    margin-bottom:25px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr 2fr auto;
+    gap:10px;
 }
 
-.prayer-box p{
-    font-size:20px;
-    color:var(--muted);
-    font-style:italic;
+input,
+select{
+    width:100%;
+    padding:12px;
+    outline:none;
 }
 
-.daily{
-    text-align:center;
+input:focus,
+select:focus{
+    border-color:var(--gold);
 }
 
-.daily-card{
-    max-width:800px;
-    margin:auto;
-    padding:40px;
+#reader{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:25px;
+    border-radius:18px;
+    padding:35px;
+    min-height:400px;
 }
 
-.daily-card h3{
+.chapter-title{
+    text-align:center;
     color:var(--gold);
-    font-size:30px;
-    margin-bottom:15px;
+    font-size:32px;
+    margin-bottom:25px;
 }
 
-.daily-card p{
-    color:var(--muted);
+.verse{
+    padding:8px 5px;
+    margin:2px 0;
+    border-radius:6px;
+    line-height:1.9;
+    cursor:text;
 }
 
-#verseReference{
+.verse:hover{
+    background:rgba(214,173,96,.05);
+}
+
+.verse-number{
     color:var(--gold);
-    margin-top:15px;
     font-weight:bold;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    margin-right:8px;
+}
+
+.highlight{
+    background:var(--highlight);
+    border-radius:4px;
+    padding:2px 3px;
+}
+
+.toolbar{
+    position:fixed;
+    bottom:20px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:200;
+
+    display:flex;
+    gap:8px;
+    align-items:center;
+
+    padding:10px;
+
+    background:rgba(10,10,12,.96);
+    border:1px solid rgba(214,173,96,.35);
+    border-radius:15px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.toolbar span{
+    color:white;
+    font-family:Arial,sans-serif;
+    font-size:13px;
+    padding:0 5px;
+}
+
+.gold-btn{
+    background:var(--gold);
+    color:#111;
+    border-color:var(--gold);
+    font-weight:bold;
+}
+
+.empty{
+    text-align:center;
+    padding:70px 20px;
+    color:var(--muted);
+    font-family:Arial,sans-serif;
+}
+
+.empty strong{
+    display:block;
+    color:var(--gold);
+    font-size:22px;
+    margin-bottom:10px;
 }
 
 footer{
     text-align:center;
-    padding:45px 20px;
-    background:#050507;
-    color:#888;
-}
-
-footer strong{
-    color:var(--gold);
-}
-
-.reveal{
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity .8s ease,transform .8s ease;
-}
-
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
-}
-
-.back-top{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:45px;
-    height:45px;
-    border:none;
-    border-radius:50%;
-    background:var(--gold);
-    cursor:pointer;
-    font-size:20px;
-    display:none;
-    z-index:900;
-}
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
+    padding:40px;
+    color:var(--muted);
+    font-family:Arial,sans-serif;
+    border-top:1px solid var(--border);
 }
 
 @media(max-width:800px){
 
-    nav{
-        gap:12px;
-        overflow-x:auto;
-        justify-content:flex-start;
+    .controls{
+        grid-template-columns:1fr 1fr;
     }
 
-    nav a{
-        white-space:nowrap;
-        font-size:12px;
-    }
-
-    .jesus-grid{
-        grid-template-columns:1fr;
-    }
-
-    .jesus-image{
-        min-height:350px;
-    }
-
-    section{
-        padding:75px 5%;
+    #reader{
+        padding:20px;
     }
 
 }
 
-@media(max-width:500px){
+@media(max-width:550px){
 
-    .hero p{
-        font-size:17px;
+    .top{
+        flex-direction:column;
     }
 
-    .jesus-text,
-    .prayer-box{
-        padding:25px;
+    .controls{
+        grid-template-columns:1fr;
+    }
+
+    .intro h1{
+        font-size:36px;
+    }
+
+    #reader{
+        padding:15px;
+    }
+
+    .toolbar{
+        width:calc(100% - 20px);
+        justify-content:center;
     }
 
 }
@@ -634,56 +313,35 @@ footer strong{
 
 </head>
 
-
 <body>
 
+<header>
 
-<nav>
+<div class="top">
 
-<a href="#inicio">Início</a>
+<div class="logo">
+✝ Caminho com Jesus
+</div>
 
-<a href="#jesus">Jesus</a>
-
-<a href="#pecados">Pecados</a>
-
-<a href="#caminho">Caminho</a>
-
-<a href="#oracao">Oração</a>
+<div class="actions">
 
 <button
-class="theme"
+type="button"
+onclick="window.location.href='index.html'">
+Início
+</button>
+
+<button
 type="button"
 onclick="toggleTheme()">
 ☀ / 🌙
 </button>
 
-</nav>
-
-
-<header id="inicio">
-
-<div class="hero">
-
-<div class="cross">✝</div>
-
-<h1>
-Um caminho de <span>fé</span>, verdade e esperança
-</h1>
-
-<p>
-Conheça os ensinamentos de Jesus, compreenda o pecado,
-aprenda a enfrentá-lo e busque diariamente uma vida mais próxima de Deus.
-</p>
-
-<div class="buttons">
-
-<a class="btn" href="#jesus">
-Conhecer Jesus
-</a>
-
-<a class="btn btn-outline" href="#pecados">
-Explorar os pecados
-</a>
+<button
+type="button"
+onclick="clearHighlights()">
+Apagar grifos
+</button>
 
 </div>
 
@@ -692,702 +350,870 @@ Explorar os pecados
 </header>
 
 
-<section id="jesus" class="reveal">
+<main>
 
-<div class="title">
+<div class="intro">
 
-<h2>Jesus Cristo</h2>
-
-<p>O centro da fé cristã</p>
-
-</div>
-
-
-<div class="container jesus-grid">
-
-<div class="jesus-image"></div>
-
-
-<div class="jesus-text">
-
-<h3>Quem é Jesus?</h3>
+<h1>📖 Bíblia</h1>
 
 <p>
-Para a fé cristã, Jesus Cristo é o Filho de Deus e o Salvador.
-Seus ensinamentos chamam as pessoas ao arrependimento,
-à fé, ao amor, ao perdão e à reconciliação com Deus.
-</p>
-
-<p>
-Seguir Jesus não significa nunca errar.
-Significa reconhecer o pecado, arrepender-se,
-buscar a graça de Deus e continuar caminhando com Ele.
-</p>
-
-<div class="verse">
-
-<p>
-"Eu sou o caminho, a verdade e a vida.
-Ninguém vem ao Pai senão por mim."
-</p>
-
-<small>João 14:6</small>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section id="pecados" class="reveal">
-
-<div class="title">
-
-<h2>Conhecendo o pecado</h2>
-
-<p>
-A Bíblia apresenta diferentes atitudes e comportamentos
-que afastam a pessoa dos princípios de Deus.
+Leia, pesquise e grife seus versículos favoritos.
+Seus grifos ficam salvos neste navegador.
 </p>
 
 </div>
 
 
-<div class="search-area">
+<div class="controls">
+
+<select id="bookSelect">
+
+<option value="">
+Livro
+</option>
+
+</select>
+
+
+<select id="chapterSelect">
+
+<option value="">
+Capítulo
+</option>
+
+</select>
+
 
 <input
 id="search"
-class="search"
 type="search"
+placeholder="🔎 Procurar palavra..."
 autocomplete="off"
 spellcheck="false"
-placeholder="🔎 Pesquisar pecado ou palavra..."
 >
 
-</div>
-
-
-<div class="filters">
 
 <button
+class="gold-btn"
 type="button"
-class="filter active"
-onclick="filterCards('all',this)">
-Todos
-</button>
-
-<button
-type="button"
-class="filter"
-onclick="filterCards('pensamentos',this)">
-Pensamentos
-</button>
-
-<button
-type="button"
-class="filter"
-onclick="filterCards('relacionamentos',this)">
-Relacionamentos
-</button>
-
-<button
-type="button"
-class="filter"
-onclick="filterCards('atitudes',this)">
-Atitudes
+onclick="searchBible()">
+Buscar
 </button>
 
 </div>
 
 
-<div class="container sin-grid" id="sinGrid">
+<div id="reader">
+
+<div class="empty">
+
+<strong>📖 Sua Bíblia</strong>
+
+Para carregar a Bíblia, coloque o arquivo
+<strong>bibliadados.json</strong> na mesma pasta
+deste arquivo.
+
+</div>
+
+</div>
+
+</main>
 
 
-<div class="sin-card" data-category="pensamentos">
+<div class="toolbar">
 
-<span class="sin-number">
-01 • PENSAMENTOS
+<span>
+Selecione um trecho:
 </span>
 
-<h3>Orgulho</h3>
-
-<p>
-Exaltar a si mesmo, desprezar os outros ou agir como se não precisasse de Deus.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Pratique humildade, reconheça seus erros,
-aceite conselhos e coloque Deus acima do próprio ego.
-
-</div>
-
-<div class="scripture">
-📖 Provérbios 16:18
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="relacionamentos">
-
-<span class="sin-number">
-02 • RELACIONAMENTOS
-</span>
-
-<h3>Inveja</h3>
-
-<p>
-Desejar aquilo que pertence a outra pessoa ou ficar ressentido com suas conquistas.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Pratique gratidão e aprenda a comemorar
-as conquistas das outras pessoas.
-
-</div>
-
-<div class="scripture">
-📖 Gálatas 5:26
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="atitudes">
-
-<span class="sin-number">
-03 • ATITUDES
-</span>
-
-<h3>Raiva e ódio</h3>
-
-<p>
-Alimentar ressentimento, hostilidade ou desejo de vingança.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Pare antes de reagir, ore, converse com calma
-e busque o perdão.
-
-</div>
-
-<div class="scripture">
-📖 Efésios 4:26-27
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="atitudes">
-
-<span class="sin-number">
-04 • ATITUDES
-</span>
-
-<h3>Mentira</h3>
-
-<p>
-Usar falsidade ou engano para esconder a verdade ou prejudicar alguém.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Procure falar a verdade e assuma seus erros.
-
-</div>
-
-<div class="scripture">
-📖 Colossenses 3:9
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="atitudes">
-
-<span class="sin-number">
-05 • ATITUDES
-</span>
-
-<h3>Ganância</h3>
-
-<p>
-Colocar a busca por riquezas ou bens acima de Deus e das pessoas.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Pratique gratidão, generosidade e contentamento.
-
-</div>
-
-<div class="scripture">
-📖 Lucas 12:15
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="pensamentos">
-
-<span class="sin-number">
-06 • PENSAMENTOS
-</span>
-
-<h3>Lascívia</h3>
-
-<p>
-Alimentar conscientemente desejos sexuais de maneira contrária aos ensinamentos cristãos.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Evite conteúdos que alimentem a tentação,
-mude o foco e busque a Deus em oração.
-
-</div>
-
-<div class="scripture">
-📖 Mateus 5:28
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="atitudes">
-
-<span class="sin-number">
-07 • ATITUDES
-</span>
-
-<h3>Preguiça espiritual</h3>
-
-<p>
-Negligenciar a oração, a leitura bíblica e o crescimento espiritual.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Crie uma rotina simples de oração e leitura da Bíblia.
-
-</div>
-
-<div class="scripture">
-📖 Hebreus 10:24-25
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="relacionamentos">
-
-<span class="sin-number">
-08 • RELACIONAMENTOS
-</span>
-
-<h3>Fofoca</h3>
-
-<p>
-Espalhar informações sobre alguém de maneira desnecessária ou prejudicial.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Antes de falar, pergunte:
-"É verdadeiro? É necessário? Vai ajudar?"
-
-</div>
-
-<div class="scripture">
-📖 Provérbios 16:28
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="relacionamentos">
-
-<span class="sin-number">
-09 • RELACIONAMENTOS
-</span>
-
-<h3>Falta de perdão</h3>
-
-<p>
-Alimentar ressentimento e desejo de vingança contra alguém.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Entregue a situação a Deus e procure praticar o perdão.
-
-</div>
-
-<div class="scripture">
-📖 Efésios 4:32
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="relacionamentos">
-
-<span class="sin-number">
-10 • RELACIONAMENTOS
-</span>
-
-<h3>Falta de amor</h3>
-
-<p>
-Tratar o próximo com desprezo, crueldade ou indiferença.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Pratique respeito, paciência, compaixão e serviço ao próximo.
-
-</div>
-
-<div class="scripture">
-📖 Marcos 12:31
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="pensamentos">
-
-<span class="sin-number">
-11 • PENSAMENTOS
-</span>
-
-<h3>Cobiça</h3>
-
-<p>
-Desejar excessivamente aquilo que pertence a outra pessoa.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Cultive contentamento e gratidão.
-
-</div>
-
-<div class="scripture">
-📖 Êxodo 20:17
-</div>
-
-</div>
-
-
-<div class="sin-card" data-category="atitudes">
-
-<span class="sin-number">
-12 • ATITUDES
-</span>
-
-<h3>Hipocrisia</h3>
-
-<p>
-Exigir dos outros aquilo que você mesmo não está disposto a praticar.
-</p>
-
-<div class="info">
-
-<strong>Como evitar:</strong>
-
-Seja sincero, reconheça suas próprias falhas
-e pratique aquilo que ensina.
-
-</div>
-
-<div class="scripture">
-📖 Mateus 23:27-28
-</div>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section id="caminho" class="reveal">
-
-<div class="title">
-
-<h2>Como lutar contra o pecado?</h2>
-
-<p>
-A caminhada cristã envolve arrependimento, fé,
-disciplina e dependência de Deus.
-</p>
-
-</div>
-
-
-<div class="container steps">
-
-
-<div class="step">
-
-<div class="step-number">1</div>
-
-<h3>Reconheça</h3>
-
-<p>
-Admita quando algo estiver errado.
-Não tente justificar aquilo que precisa ser corrigido.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">2</div>
-
-<h3>Arrependa-se</h3>
-
-<p>
-Confesse seus pecados a Deus e volte o coração
-para aquilo que é correto.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">3</div>
-
-<h3>Ore</h3>
-
-<p>
-Converse com Deus com sinceridade
-e peça força para resistir à tentação.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">4</div>
-
-<h3>Afaste-se</h3>
-
-<p>
-Identifique situações e conteúdos que normalmente
-levam você à tentação.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">5</div>
-
-<h3>Leia a Bíblia</h3>
-
-<p>
-Conheça os ensinamentos de Jesus e coloque-os em prática.
-</p>
-
-</div>
-
-
-<div class="step">
-
-<div class="step-number">6</div>
-
-<h3>Recomece</h3>
-
-<p>
-Uma queda não precisa significar o fim.
-Reconheça, aprenda e continue buscando a Deus.
-</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-
-<section class="truth reveal">
-
-<div class="truth-box">
-
-<h2>O evangelho é sobre transformação</h2>
-
-<p>
-A mensagem cristã não é apenas sobre reconhecer o pecado.
-É também sobre arrependimento, graça, perdão,
-fé e uma nova vida em Cristo.
-</p>
-
-<div class="verse">
-
-<p>
-"Se alguém está em Cristo, é nova criatura;
-as coisas antigas já passaram."
-</p>
-
-<small>2 Coríntios 5:17</small>
-
-</div>
-
-</div>
-
-</section>
-
-
-<section class="daily reveal">
-
-<div class="title">
-
-<h2>Versículo do dia</h2>
-
-<p>
-Reserve alguns minutos para refletir.
-</p>
-
-</div>
-
-
-<div class="daily-card">
-
-<h3 id="dailyVerse"></h3>
-
-<p id="dailyText"></p>
-
-<div id="verseReference"></div>
-
-<br>
+<button
+class="gold-btn"
+type="button"
+onclick="highlightSelection()">
+🖍️ Grifar
+</button>
 
 <button
 type="button"
-class="btn"
-onclick="newVerse()">
-Novo versículo
+onclick="removeSelectionHighlight()">
+Desgrifar
 </button>
 
 </div>
-
-</section>
-
-
-<section id="oracao" class="reveal">
-
-<div class="title">
-
-<h2>Momento de oração</h2>
-
-<p>
-Você pode conversar com Deus com sinceridade.
-</p>
-
-</div>
-
-
-<div class="prayer">
-
-<div class="prayer-box">
-
-<p>
-"Senhor Jesus, ajuda-me a reconhecer aquilo que precisa
-mudar em minha vida. Dá-me força para resistir às tentações,
-sabedoria para escolher o que é certo e humildade para
-reconhecer meus erros.
-
-Ajuda-me a amar o próximo, perdoar, ter paciência
-e permanecer cada dia mais perto de Ti.
-
-Que minha vida reflita o Teu amor e que eu possa
-crescer na fé, na verdade e na obediência.
-
-Amém."
-</p>
-
-</div>
-
-</div>
-
-</section>
 
 
 <footer>
 
 <p>
-<strong>✝ Caminho com Jesus</strong>
+✝ Caminho com Jesus
 </p>
 
 <p>
-Um espaço para reflexão, fé e conhecimento da Bíblia.
-</p>
-
-<br>
-
-<p>
-"Permanecei em mim, e eu permanecerei em vós."
-— João 15:4
+Seus grifos são armazenados apenas neste navegador.
 </p>
 
 </footer>
 
 
-<button
-type="button"
-class="back-top"
-id="backTop"
-onclick="window.scrollTo({top:0,behavior:'smooth'})">
-↑
-</button>
-
-
 <script>
 
-/* =====================================================
-   JAVASCRIPT DO SITE
-   Sem bibliotecas externas.
-   Sem conexões com servidores.
-   Sem downloads.
-   ===================================================== */
+/*
+====================================================
+BÍBLIA LOCAL
+====================================================
+
+O site procura:
+
+bibliadados.json
+
+na mesma pasta.
+
+Formato esperado:
+
+{
+  "Gênesis": {
+    "1": [
+      "No princípio..."
+    ],
+    "2": [
+      "Assim foram..."
+    ]
+  }
+}
+
+Cada item do array representa um versículo.
+*/
 
 
-/* MODO CLARO / ESCURO */
+let bible = {};
+
+let currentBook = "";
+
+let currentChapter = "";
+
+
+/*
+CARREGAR BÍBLIA
+*/
+
+async function loadBible(){
+
+    try{
+
+        const response =
+        await fetch("bibliadados.json");
+
+        if(!response.ok){
+            throw new Error("Arquivo não encontrado");
+        }
+
+        bible =
+        await response.json();
+
+        populateBooks();
+
+    }catch(error){
+
+        document.getElementById("reader").innerHTML = `
+
+        <div class="empty">
+
+        <strong>📖 Bíblia não carregada</strong>
+
+        Coloque o arquivo:
+
+        <br><br>
+
+        <b>bibliadados.json</b>
+
+        <br><br>
+
+        na mesma pasta deste arquivo.
+
+        </div>
+
+        `;
+
+    }
+
+}
+
+
+/*
+PREENCHER LIVROS
+*/
+
+function populateBooks(){
+
+    const select =
+    document.getElementById("bookSelect");
+
+    select.innerHTML =
+    '<option value="">Livro</option>';
+
+    Object.keys(bible).forEach(book=>{
+
+        const option =
+        document.createElement("option");
+
+        option.value = book;
+        option.textContent = book;
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+/*
+SELECIONAR LIVRO
+*/
+
+document
+.getElementById("bookSelect")
+.addEventListener("change",function(){
+
+    currentBook = this.value;
+
+    const chapterSelect =
+    document.getElementById("chapterSelect");
+
+    chapterSelect.innerHTML =
+    '<option value="">Capítulo</option>';
+
+    if(!currentBook){
+
+        return;
+
+    }
+
+    Object.keys(bible[currentBook])
+    .forEach(chapter=>{
+
+        const option =
+        document.createElement("option");
+
+        option.value = chapter;
+        option.textContent =
+        "Capítulo "+chapter;
+
+        chapterSelect.appendChild(option);
+
+    });
+
+});
+
+
+/*
+SELECIONAR CAPÍTULO
+*/
+
+document
+.getElementById("chapterSelect")
+.addEventListener("change",function(){
+
+    currentChapter = this.value;
+
+    if(currentBook && currentChapter){
+
+        renderChapter(
+            currentBook,
+            currentChapter
+        );
+
+    }
+
+});
+
+
+/*
+MOSTRAR CAPÍTULO
+*/
+
+function renderChapter(book,chapter){
+
+    const reader =
+    document.getElementById("reader");
+
+    reader.innerHTML = "";
+
+    const title =
+    document.createElement("h2");
+
+    title.className =
+    "chapter-title";
+
+    title.textContent =
+    book+" "+chapter;
+
+    reader.appendChild(title);
+
+
+    const verses =
+    bible[book][chapter];
+
+
+    verses.forEach((text,index)=>{
+
+        const verse =
+        document.createElement("div");
+
+        verse.className="verse";
+
+        verse.dataset.book=book;
+
+        verse.dataset.chapter=chapter;
+
+        verse.dataset.verse=index+1;
+
+        const number =
+        document.createElement("span");
+
+        number.className="verse-number";
+
+        number.textContent =
+        index+1;
+
+        verse.appendChild(number);
+
+
+        const content =
+        document.createElement("span");
+
+        content.textContent=text;
+
+        verse.appendChild(content);
+
+        reader.appendChild(verse);
+
+    });
+
+
+    restoreHighlights();
+
+}
+
+
+/*
+GRIFAR SELEÇÃO
+*/
+
+function highlightSelection(){
+
+    const selection =
+    window.getSelection();
+
+    if(!selection ||
+       selection.rangeCount===0 ||
+       selection.isCollapsed){
+
+        alert(
+        "Selecione primeiro o texto que deseja grifar."
+        );
+
+        return;
+
+    }
+
+
+    const range =
+    selection.getRangeAt(0);
+
+    const container =
+    range.commonAncestorContainer;
+
+
+    const verse =
+    container.nodeType===1
+    ? container.closest(".verse")
+    : container.parentElement.closest(".verse");
+
+
+    if(!verse){
+
+        alert(
+        "Selecione um trecho dentro de um versículo."
+        );
+
+        return;
+
+    }
+
+
+    const span =
+    document.createElement("mark");
+
+    span.className="highlight";
+
+
+    try{
+
+        range.surroundContents(span);
+
+    }catch(error){
+
+        alert(
+        "Selecione um trecho dentro do mesmo versículo."
+        );
+
+        return;
+
+    }
+
+
+    saveHighlights();
+
+    selection.removeAllRanges();
+
+}
+
+
+/*
+SALVAR GRIFOS
+*/
+
+function saveHighlights(){
+
+    const highlights = [];
+
+    document
+    .querySelectorAll(".highlight")
+    .forEach(mark=>{
+
+        const verse =
+        mark.closest(".verse");
+
+        if(!verse) return;
+
+        highlights.push({
+
+            book:verse.dataset.book,
+
+            chapter:verse.dataset.chapter,
+
+            verse:verse.dataset.verse,
+
+            text:mark.textContent
+
+        });
+
+    });
+
+
+    try{
+
+        localStorage.setItem(
+            "caminhoJesusHighlights",
+            JSON.stringify(highlights)
+        );
+
+    }catch(error){
+
+        console.warn(
+            "Não foi possível salvar os grifos."
+        );
+
+    }
+
+}
+
+
+/*
+RESTAURAR GRIFOS
+*/
+
+function restoreHighlights(){
+
+    let saved=[];
+
+    try{
+
+        saved =
+        JSON.parse(
+            localStorage.getItem(
+                "caminhoJesusHighlights"
+            )
+        ) || [];
+
+    }catch(error){
+
+        saved=[];
+
+    }
+
+
+    saved.forEach(item=>{
+
+        if(
+            item.book !== currentBook ||
+            item.chapter !== currentChapter
+        ){
+
+            return;
+
+        }
+
+
+        const verse =
+        document.querySelector(
+        `.verse[data-verse="${CSS.escape(item.verse)}"]`
+        );
+
+
+        if(!verse) return;
+
+
+        const textNodes =
+        getTextNodes(verse);
+
+
+        for(const node of textNodes){
+
+            const text =
+            node.textContent;
+
+            const position =
+            text.indexOf(item.text);
+
+            if(position===-1){
+
+                continue;
+
+            }
+
+
+            const range =
+            document.createRange();
+
+            range.setStart(
+                node,
+                position
+            );
+
+            range.setEnd(
+                node,
+                position + item.text.length
+            );
+
+
+            const mark =
+            document.createElement("mark");
+
+            mark.className="highlight";
+
+
+            try{
+
+                range.surroundContents(mark);
+
+            }catch(error){}
+
+            break;
+
+        }
+
+    });
+
+}
+
+
+/*
+PEGAR NÓS DE TEXTO
+*/
+
+function getTextNodes(element){
+
+    const nodes=[];
+
+    const walker =
+    document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT
+    );
+
+    let node;
+
+    while(
+        node=walker.nextNode()
+    ){
+
+        if(
+            !node.parentElement.closest(".verse-number") &&
+            !node.parentElement.classList.contains("highlight")
+        ){
+
+            nodes.push(node);
+
+        }
+
+    }
+
+    return nodes;
+
+}
+
+
+/*
+DESGRIFAR SELEÇÃO
+*/
+
+function removeSelectionHighlight(){
+
+    const selection =
+    window.getSelection();
+
+    if(!selection ||
+       selection.rangeCount===0){
+
+        return;
+
+    }
+
+
+    let node =
+    selection.anchorNode;
+
+
+    if(!node){
+
+        return;
+
+    }
+
+
+    const mark =
+    node.parentElement.closest(".highlight");
+
+
+    if(mark){
+
+        const parent =
+        mark.parentNode;
+
+        while(mark.firstChild){
+
+            parent.insertBefore(
+                mark.firstChild,
+                mark
+            );
+
+        }
+
+        parent.removeChild(mark);
+
+        saveHighlights();
+
+    }
+
+}
+
+
+/*
+APAGAR TODOS OS GRIFOS
+*/
+
+function clearHighlights(){
+
+    const confirmation =
+    confirm(
+    "Tem certeza que deseja apagar todos os grifos salvos?"
+    );
+
+    if(!confirmation){
+
+        return;
+
+    }
+
+
+    try{
+
+        localStorage.removeItem(
+            "caminhoJesusHighlights"
+        );
+
+    }catch(error){}
+
+
+    document
+    .querySelectorAll(".highlight")
+    .forEach(mark=>{
+
+        const parent =
+        mark.parentNode;
+
+        while(mark.firstChild){
+
+            parent.insertBefore(
+                mark.firstChild,
+                mark
+            );
+
+        }
+
+        parent.removeChild(mark);
+
+    });
+
+}
+
+
+/*
+BUSCA
+*/
+
+function searchBible(){
+
+    const query =
+    document
+    .getElementById("search")
+    .value
+    .trim()
+    .toLowerCase();
+
+
+    if(!query){
+
+        return;
+
+    }
+
+
+    const results=[];
+
+
+    Object.keys(bible).forEach(book=>{
+
+        Object.keys(bible[book])
+        .forEach(chapter=>{
+
+            bible[book][chapter]
+            .forEach((verse,index)=>{
+
+                if(
+                    verse
+                    .toLowerCase()
+                    .includes(query)
+                ){
+
+                    results.push({
+
+                        book:book,
+
+                        chapter:chapter,
+
+                        verse:index+1,
+
+                        text:verse
+
+                    });
+
+                }
+
+            });
+
+        });
+
+    });
+
+
+    showSearchResults(results,query);
+
+}
+
+
+/*
+MOSTRAR RESULTADOS
+*/
+
+function showSearchResults(results,query){
+
+    const reader =
+    document.getElementById("reader");
+
+    reader.innerHTML="";
+
+
+    const title =
+    document.createElement("h2");
+
+    title.className="chapter-title";
+
+    title.textContent =
+    results.length+
+    " resultado(s) para: "+
+    query;
+
+    reader.appendChild(title);
+
+
+    if(results.length===0){
+
+        const empty =
+        document.createElement("div");
+
+        empty.className="empty";
+
+        empty.textContent=
+        "Nenhum versículo encontrado.";
+
+        reader.appendChild(empty);
+
+        return;
+
+    }
+
+
+    results.slice(0,100)
+    .forEach(result=>{
+
+        const verse =
+        document.createElement("div");
+
+        verse.className="verse";
+
+        verse.dataset.book=result.book;
+
+        verse.dataset.chapter=result.chapter;
+
+        verse.dataset.verse=result.verse;
+
+
+        const number =
+        document.createElement("span");
+
+        number.className="verse-number";
+
+        number.textContent=
+        result.book+
+        " "+
+        result.chapter+
+        ":"+
+        result.verse;
+
+        verse.appendChild(number);
+
+
+        const content =
+        document.createElement("span");
+
+        content.textContent=
+        result.text;
+
+        verse.appendChild(content);
+
+
+        reader.appendChild(verse);
+
+    });
+
+}
+
+
+/*
+TEMA
+*/
 
 function toggleTheme(){
 
@@ -1396,206 +1222,40 @@ function toggleTheme(){
     try{
 
         localStorage.setItem(
-            "theme",
+            "bibleTheme",
             document.body.classList.contains("light")
             ? "light"
             : "dark"
         );
 
-    }catch(e){}
+    }catch(error){}
 
 }
 
 
 try{
 
-    if(localStorage.getItem("theme")==="light"){
+    if(
+        localStorage.getItem("bibleTheme")
+        ==="light"
+    ){
+
         document.body.classList.add("light");
+
     }
 
-}catch(e){}
+}catch(error){}
 
 
-/* BUSCA */
+/*
+INICIAR
+*/
 
-const search =
-document.getElementById("search");
-
-const cards =
-document.querySelectorAll(".sin-card");
-
-
-search.addEventListener("input",function(){
-
-    const value =
-    this.value.toLowerCase().trim();
-
-    cards.forEach(card=>{
-
-        const text =
-        card.textContent.toLowerCase();
-
-        card.style.display =
-        text.includes(value)
-        ? "block"
-        : "none";
-
-    });
-
-});
-
-
-/* FILTROS */
-
-function filterCards(category,button){
-
-    document
-    .querySelectorAll(".filter")
-    .forEach(btn=>{
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    search.value="";
-
-    cards.forEach(card=>{
-
-        if(category==="all"){
-
-            card.style.display="block";
-
-        }else{
-
-            card.style.display =
-            card.dataset.category===category
-            ? "block"
-            : "none";
-
-        }
-
-    });
-
-}
-
-
-/* ANIMAÇÕES */
-
-const observer =
-new IntersectionObserver(
-entries=>{
-
-    entries.forEach(entry=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.classList.add("show");
-
-            observer.unobserve(entry.target);
-
-        }
-
-    });
-
-},
-{
-    threshold:.12
-});
-
-
-document
-.querySelectorAll(".reveal")
-.forEach(el=>{
-    observer.observe(el);
-});
-
-
-/* BOTÃO VOLTAR AO TOPO */
-
-const backTop =
-document.getElementById("backTop");
-
-
-window.addEventListener(
-"scroll",
-()=>{
-
-    backTop.style.display =
-    window.scrollY>500
-    ? "block"
-    : "none";
-
-},
-{
-    passive:true
-});
-
-
-/* VERSÍCULOS */
-
-const verses=[
-
-{
-    title:"João 3:16",
-    text:"Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna."
-},
-
-{
-    title:"Salmos 23:1",
-    text:"O Senhor é o meu pastor; nada me faltará."
-},
-
-{
-    title:"Filipenses 4:13",
-    text:"Tudo posso naquele que me fortalece."
-},
-
-{
-    title:"Mateus 11:28",
-    text:"Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei."
-},
-
-{
-    title:"Salmos 119:105",
-    text:"Lâmpada para os meus pés é a tua palavra e luz para o meu caminho."
-},
-
-{
-    title:"João 14:6",
-    text:"Eu sou o caminho, a verdade e a vida."
-}
-
-];
-
-
-function newVerse(){
-
-    const random =
-    verses[
-        Math.floor(
-            Math.random()*verses.length
-        )
-    ];
-
-    document
-    .getElementById("dailyVerse")
-    .textContent=random.title;
-
-    document
-    .getElementById("dailyText")
-    .textContent=random.text;
-
-    document
-    .getElementById("verseReference")
-    .textContent="📖 "+random.title;
-
-}
-
-
-newVerse();
+loadBible();
 
 </script>
 
 </body>
+
 </html>
 ```
