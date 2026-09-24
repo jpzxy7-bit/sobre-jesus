@@ -1,14 +1,44 @@
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Caminho com Jesus | Fé, Bíblia e Transformação</title>
 
 <meta name="description"
-content="Um espaço para conhecer os ensinamentos de Jesus, compreender o pecado, buscar arrependimento e crescer na fé cristã.">
+content="Um espaço para conhecer os ensinamentos de Jesus, compreender o pecado e crescer na fé cristã.">
+
+<!-- PROTEÇÕES DE SEGURANÇA -->
+<meta http-equiv="Content-Security-Policy"
+content="
+default-src 'self';
+script-src 'self' 'unsafe-inline';
+style-src 'self' 'unsafe-inline';
+img-src 'self' data:;
+font-src 'self';
+connect-src 'none';
+object-src 'none';
+frame-src 'none';
+media-src 'self';
+base-uri 'self';
+form-action 'none';
+worker-src 'none';
+manifest-src 'none';
+upgrade-insecure-requests;
+">
+
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+<meta http-equiv="Referrer-Policy"
+content="strict-origin-when-cross-origin">
+
+<meta http-equiv="Permissions-Policy"
+content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=()">
 
 <style>
 
@@ -69,16 +99,29 @@ header{
     overflow:hidden;
 
     background:
-    linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.88)),
-    url("https://images.unsplash.com/photo-1507692049790-de58290a4334?auto=format&fit=crop&w=2000&q=85")
-    center/cover;
+    radial-gradient(
+        circle at center,
+        rgba(214,173,96,.16),
+        transparent 35%
+    ),
+    linear-gradient(
+        135deg,
+        #08090d,
+        #15110a,
+        #08090d
+    );
 }
 
 header::after{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(circle at center,transparent 20%,rgba(0,0,0,.5));
+    background:
+    radial-gradient(
+        circle at center,
+        transparent 15%,
+        rgba(0,0,0,.55)
+    );
     pointer-events:none;
 }
 
@@ -88,13 +131,17 @@ nav{
     left:0;
     width:100%;
     z-index:999;
+
     display:flex;
     justify-content:center;
     align-items:center;
     gap:25px;
+
     padding:17px 20px;
-    background:rgba(5,5,7,.78);
+
+    background:rgba(5,5,7,.88);
     backdrop-filter:blur(15px);
+
     border-bottom:1px solid rgba(255,255,255,.07);
 }
 
@@ -164,6 +211,7 @@ nav a:hover{
     font-weight:bold;
     transition:.3s;
     border:1px solid var(--gold);
+    cursor:pointer;
 }
 
 .btn:hover{
@@ -211,11 +259,31 @@ section{
 .jesus-image{
     min-height:500px;
     border-radius:25px;
+
     background:
-    linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.7)),
-    url("https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&w=1000&q=85")
-    center/cover;
+    radial-gradient(
+        circle at 50% 35%,
+        rgba(214,173,96,.35),
+        transparent 18%
+    ),
+    linear-gradient(
+        145deg,
+        #241c0e,
+        #08090d 65%
+    );
+
     box-shadow:var(--shadow);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:130px;
+}
+
+.jesus-image::after{
+    content:"✝";
+    color:var(--gold);
 }
 
 .jesus-text{
@@ -398,9 +466,12 @@ section{
 
 .truth{
     background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.8)),
-    url("https://images.unsplash.com/photo-1473177104440-ffee2f376098?auto=format&fit=crop&w=1800&q=85")
-    center/cover fixed;
+    radial-gradient(
+        circle at center,
+        rgba(214,173,96,.15),
+        transparent 35%
+    ),
+    #090a0e;
 }
 
 .truth-box{
@@ -506,14 +577,17 @@ footer strong{
 }
 
 @keyframes fadeUp{
+
     from{
         opacity:0;
         transform:translateY(30px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
+
 }
 
 @media(max-width:800px){
@@ -557,19 +631,31 @@ footer strong{
 }
 
 </style>
+
 </head>
 
+
 <body>
+
 
 <nav>
 
 <a href="#inicio">Início</a>
+
 <a href="#jesus">Jesus</a>
+
 <a href="#pecados">Pecados</a>
+
 <a href="#caminho">Caminho</a>
+
 <a href="#oracao">Oração</a>
 
-<button class="theme" onclick="toggleTheme()">☀ / 🌙</button>
+<button
+class="theme"
+type="button"
+onclick="toggleTheme()">
+☀ / 🌙
+</button>
 
 </nav>
 
@@ -612,9 +698,7 @@ Explorar os pecados
 
 <h2>Jesus Cristo</h2>
 
-<p>
-O centro da fé cristã
-</p>
+<p>O centro da fé cristã</p>
 
 </div>
 
@@ -622,6 +706,7 @@ O centro da fé cristã
 <div class="container jesus-grid">
 
 <div class="jesus-image"></div>
+
 
 <div class="jesus-text">
 
@@ -666,7 +751,6 @@ Ninguém vem ao Pai senão por mim."
 <p>
 A Bíblia apresenta diferentes atitudes e comportamentos
 que afastam a pessoa dos princípios de Deus.
-Use a busca para encontrar um tema.
 </p>
 
 </div>
@@ -677,7 +761,9 @@ Use a busca para encontrar um tema.
 <input
 id="search"
 class="search"
-type="text"
+type="search"
+autocomplete="off"
+spellcheck="false"
 placeholder="🔎 Pesquisar pecado ou palavra..."
 >
 
@@ -686,19 +772,31 @@ placeholder="🔎 Pesquisar pecado ou palavra..."
 
 <div class="filters">
 
-<button class="filter active" onclick="filterCards('all',this)">
+<button
+type="button"
+class="filter active"
+onclick="filterCards('all',this)">
 Todos
 </button>
 
-<button class="filter" onclick="filterCards('pensamentos',this)">
+<button
+type="button"
+class="filter"
+onclick="filterCards('pensamentos',this)">
 Pensamentos
 </button>
 
-<button class="filter" onclick="filterCards('relacionamentos',this)">
+<button
+type="button"
+class="filter"
+onclick="filterCards('relacionamentos',this)">
 Relacionamentos
 </button>
 
-<button class="filter" onclick="filterCards('atitudes',this)">
+<button
+type="button"
+class="filter"
+onclick="filterCards('atitudes',this)">
 Atitudes
 </button>
 
@@ -710,7 +808,9 @@ Atitudes
 
 <div class="sin-card" data-category="pensamentos">
 
-<span class="sin-number">01 • PENSAMENTOS</span>
+<span class="sin-number">
+01 • PENSAMENTOS
+</span>
 
 <h3>Orgulho</h3>
 
@@ -736,7 +836,9 @@ aceite conselhos e coloque Deus acima do próprio ego.
 
 <div class="sin-card" data-category="relacionamentos">
 
-<span class="sin-number">02 • RELACIONAMENTOS</span>
+<span class="sin-number">
+02 • RELACIONAMENTOS
+</span>
 
 <h3>Inveja</h3>
 
@@ -762,7 +864,9 @@ as conquistas das outras pessoas.
 
 <div class="sin-card" data-category="atitudes">
 
-<span class="sin-number">03 • ATITUDES</span>
+<span class="sin-number">
+03 • ATITUDES
+</span>
 
 <h3>Raiva e ódio</h3>
 
@@ -788,7 +892,9 @@ e busque o perdão.
 
 <div class="sin-card" data-category="atitudes">
 
-<span class="sin-number">04 • ATITUDES</span>
+<span class="sin-number">
+04 • ATITUDES
+</span>
 
 <h3>Mentira</h3>
 
@@ -800,8 +906,7 @@ Usar falsidade ou engano para esconder a verdade ou prejudicar alguém.
 
 <strong>Como evitar:</strong>
 
-Procure falar a verdade e assuma seus erros
-quando fizer algo errado.
+Procure falar a verdade e assuma seus erros.
 
 </div>
 
@@ -814,7 +919,9 @@ quando fizer algo errado.
 
 <div class="sin-card" data-category="atitudes">
 
-<span class="sin-number">05 • ATITUDES</span>
+<span class="sin-number">
+05 • ATITUDES
+</span>
 
 <h3>Ganância</h3>
 
@@ -839,13 +946,14 @@ Pratique gratidão, generosidade e contentamento.
 
 <div class="sin-card" data-category="pensamentos">
 
-<span class="sin-number">06 • PENSAMENTOS</span>
+<span class="sin-number">
+06 • PENSAMENTOS
+</span>
 
 <h3>Lascívia</h3>
 
 <p>
-Alimentar conscientemente desejos sexuais de maneira contrária
-aos ensinamentos cristãos.
+Alimentar conscientemente desejos sexuais de maneira contrária aos ensinamentos cristãos.
 </p>
 
 <div class="info">
@@ -866,7 +974,9 @@ mude o foco e busque a Deus em oração.
 
 <div class="sin-card" data-category="atitudes">
 
-<span class="sin-number">07 • ATITUDES</span>
+<span class="sin-number">
+07 • ATITUDES
+</span>
 
 <h3>Preguiça espiritual</h3>
 
@@ -878,8 +988,7 @@ Negligenciar a oração, a leitura bíblica e o crescimento espiritual.
 
 <strong>Como evitar:</strong>
 
-Crie uma rotina simples de oração e leitura
-da Bíblia e seja constante.
+Crie uma rotina simples de oração e leitura da Bíblia.
 
 </div>
 
@@ -892,13 +1001,14 @@ da Bíblia e seja constante.
 
 <div class="sin-card" data-category="relacionamentos">
 
-<span class="sin-number">08 • RELACIONAMENTOS</span>
+<span class="sin-number">
+08 • RELACIONAMENTOS
+</span>
 
 <h3>Fofoca</h3>
 
 <p>
-Espalhar informações sobre alguém de maneira desnecessária
-ou prejudicial.
+Espalhar informações sobre alguém de maneira desnecessária ou prejudicial.
 </p>
 
 <div class="info">
@@ -919,7 +1029,9 @@ Antes de falar, pergunte:
 
 <div class="sin-card" data-category="relacionamentos">
 
-<span class="sin-number">09 • RELACIONAMENTOS</span>
+<span class="sin-number">
+09 • RELACIONAMENTOS
+</span>
 
 <h3>Falta de perdão</h3>
 
@@ -931,8 +1043,7 @@ Alimentar ressentimento e desejo de vingança contra alguém.
 
 <strong>Como evitar:</strong>
 
-Entregue a situação a Deus e procure
-praticar o perdão, sem confundir perdão com permitir abusos.
+Entregue a situação a Deus e procure praticar o perdão.
 
 </div>
 
@@ -945,7 +1056,9 @@ praticar o perdão, sem confundir perdão com permitir abusos.
 
 <div class="sin-card" data-category="relacionamentos">
 
-<span class="sin-number">10 • RELACIONAMENTOS</span>
+<span class="sin-number">
+10 • RELACIONAMENTOS
+</span>
 
 <h3>Falta de amor</h3>
 
@@ -970,7 +1083,9 @@ Pratique respeito, paciência, compaixão e serviço ao próximo.
 
 <div class="sin-card" data-category="pensamentos">
 
-<span class="sin-number">11 • PENSAMENTOS</span>
+<span class="sin-number">
+11 • PENSAMENTOS
+</span>
 
 <h3>Cobiça</h3>
 
@@ -982,8 +1097,7 @@ Desejar excessivamente aquilo que pertence a outra pessoa.
 
 <strong>Como evitar:</strong>
 
-Cultive contentamento e gratidão pelo que Deus colocou
-em sua vida.
+Cultive contentamento e gratidão.
 
 </div>
 
@@ -996,13 +1110,14 @@ em sua vida.
 
 <div class="sin-card" data-category="atitudes">
 
-<span class="sin-number">12 • ATITUDES</span>
+<span class="sin-number">
+12 • ATITUDES
+</span>
 
 <h3>Hipocrisia</h3>
 
 <p>
-Exigir dos outros aquilo que você mesmo não está disposto
-a praticar.
+Exigir dos outros aquilo que você mesmo não está disposto a praticar.
 </p>
 
 <div class="info">
@@ -1041,6 +1156,7 @@ disciplina e dependência de Deus.
 
 
 <div class="container steps">
+
 
 <div class="step">
 
@@ -1105,8 +1221,7 @@ levam você à tentação.
 <h3>Leia a Bíblia</h3>
 
 <p>
-Conheça os ensinamentos de Jesus
-e coloque-os em prática.
+Conheça os ensinamentos de Jesus e coloque-os em prática.
 </p>
 
 </div>
@@ -1124,6 +1239,7 @@ Reconheça, aprenda e continue buscando a Deus.
 </p>
 
 </div>
+
 
 </div>
 
@@ -1181,7 +1297,10 @@ Reserve alguns minutos para refletir.
 
 <br>
 
-<button class="btn" onclick="newVerse()">
+<button
+type="button"
+class="btn"
+onclick="newVerse()">
 Novo versículo
 </button>
 
@@ -1249,50 +1368,77 @@ Um espaço para reflexão, fé e conhecimento da Bíblia.
 </footer>
 
 
-<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+<button
+type="button"
+class="back-top"
+id="backTop"
+onclick="window.scrollTo({top:0,behavior:'smooth'})">
 ↑
 </button>
 
 
 <script>
 
-/* MODO ESCURO / CLARO */
+/* =====================================================
+   JAVASCRIPT DO SITE
+   Sem bibliotecas externas.
+   Sem conexões com servidores.
+   Sem downloads.
+   ===================================================== */
+
+
+/* MODO CLARO / ESCURO */
 
 function toggleTheme(){
 
     document.body.classList.toggle("light");
 
-    localStorage.setItem(
-        "theme",
-        document.body.classList.contains("light")
-        ? "light"
-        : "dark"
-    );
+    try{
+
+        localStorage.setItem(
+            "theme",
+            document.body.classList.contains("light")
+            ? "light"
+            : "dark"
+        );
+
+    }catch(e){}
 
 }
 
-if(localStorage.getItem("theme")==="light"){
-    document.body.classList.add("light");
-}
+
+try{
+
+    if(localStorage.getItem("theme")==="light"){
+        document.body.classList.add("light");
+    }
+
+}catch(e){}
 
 
 /* BUSCA */
 
-const search = document.getElementById("search");
-const cards = document.querySelectorAll(".sin-card");
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".sin-card");
+
 
 search.addEventListener("input",function(){
 
-    const value = this.value.toLowerCase();
+    const value =
+    this.value.toLowerCase().trim();
 
     cards.forEach(card=>{
 
-        const text = card.innerText.toLowerCase();
+        const text =
+        card.textContent.toLowerCase();
 
         card.style.display =
-            text.includes(value)
-            ? "block"
-            : "none";
+        text.includes(value)
+        ? "block"
+        : "none";
 
     });
 
@@ -1303,22 +1449,29 @@ search.addEventListener("input",function(){
 
 function filterCards(category,button){
 
-    document.querySelectorAll(".filter").forEach(btn=>{
+    document
+    .querySelectorAll(".filter")
+    .forEach(btn=>{
         btn.classList.remove("active");
     });
 
     button.classList.add("active");
 
+    search.value="";
+
     cards.forEach(card=>{
 
         if(category==="all"){
+
             card.style.display="block";
-        }
-        else{
+
+        }else{
+
             card.style.display =
-                card.dataset.category===category
-                ? "block"
-                : "none";
+            card.dataset.category===category
+            ? "block"
+            : "none";
+
         }
 
     });
@@ -1326,43 +1479,55 @@ function filterCards(category,button){
 }
 
 
-/* ANIMAÇÕES AO DESCER */
+/* ANIMAÇÕES */
 
-const observer = new IntersectionObserver(
-    entries=>{
+const observer =
+new IntersectionObserver(
+entries=>{
 
-        entries.forEach(entry=>{
+    entries.forEach(entry=>{
 
-            if(entry.isIntersecting){
-                entry.target.classList.add("show");
-            }
+        if(entry.isIntersecting){
 
-        });
+            entry.target.classList.add("show");
 
-    },
-    {
-        threshold:.12
-    }
-);
+            observer.unobserve(entry.target);
 
-document.querySelectorAll(".reveal").forEach(el=>{
+        }
+
+    });
+
+},
+{
+    threshold:.12
+});
+
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>{
     observer.observe(el);
 });
 
 
 /* BOTÃO VOLTAR AO TOPO */
 
-const backTop = document.getElementById("backTop");
+const backTop =
+document.getElementById("backTop");
 
-window.addEventListener("scroll",()=>{
 
-    if(window.scrollY>500){
-        backTop.style.display="block";
-    }
-    else{
-        backTop.style.display="none";
-    }
+window.addEventListener(
+"scroll",
+()=>{
 
+    backTop.style.display =
+    window.scrollY>500
+    ? "block"
+    : "none";
+
+},
+{
+    passive:true
 });
 
 
@@ -1386,11 +1551,6 @@ const verses=[
 },
 
 {
-    title:"Romanos 8:28",
-    text:"Sabemos que todas as coisas cooperam para o bem daqueles que amam a Deus."
-},
-
-{
     title:"Mateus 11:28",
     text:"Vinde a mim, todos os que estais cansados e sobrecarregados, e eu vos aliviarei."
 },
@@ -1411,33 +1571,28 @@ const verses=[
 function newVerse(){
 
     const random =
-        verses[Math.floor(Math.random()*verses.length)];
+    verses[
+        Math.floor(
+            Math.random()*verses.length
+        )
+    ];
 
-    document.getElementById("dailyVerse").textContent =
-        random.title;
+    document
+    .getElementById("dailyVerse")
+    .textContent=random.title;
 
-    document.getElementById("dailyText").textContent =
-        random.text;
+    document
+    .getElementById("dailyText")
+    .textContent=random.text;
 
-    document.getElementById("verseReference").textContent =
-        "📖 "+random.title;
+    document
+    .getElementById("verseReference")
+    .textContent="📖 "+random.title;
 
 }
 
+
 newVerse();
-
-
-/* FECHAR BUSCA AO CLICAR EM FILTRO */
-
-document.querySelectorAll(".filter").forEach(button=>{
-
-    button.addEventListener("click",()=>{
-
-        search.value="";
-
-    });
-
-});
 
 </script>
 
